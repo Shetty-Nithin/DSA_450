@@ -33,42 +33,7 @@ void postorder(Node* root)
 }
 
 //--------------------------IteratiVE way---------------------------------------
-//approach 1
-void postorderIterative(Node* root)
-{
-    if (root == nullptr) {
-        return;
-    }
- 
-    stack<Node*> s;
-    s.push(root);
- 
-    stack<int> out;
- 
-    while (!s.empty())
-    {
-        Node* curr = s.top();
-        s.pop();
- 
-        out.push(curr->data);
- 
-        if (curr->left) {
-            s.push(curr->left);
-        }
- 
-        if (curr->right) {
-            s.push(curr->right);
-        }
-    }
- 
-    while (!out.empty())
-    {
-        cout << out.top() << " ";
-        out.pop();
-    }
-}
-
-//approach 2 : Using 2 stacks.
+//approach 1 : Using 2 stacks.
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -109,7 +74,7 @@ vector<int> postorderTraversal(TreeNode* root){
     return res;
 }
 
-//approach 3 : Using 1 stack.
+//approach 2 : Using 1 stack.
 vector<int> postorderTraversal(TreeNode* root){
     stack<TreeNode*> st;
     vector<int> res;

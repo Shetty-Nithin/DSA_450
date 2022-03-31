@@ -63,6 +63,7 @@ pair<bool, int> balancedCheck(Node* root){
     pair<bool, int> right = balancedCheck(root->right);
     
     pair<bool, int> ans;
+    
     bool diff = abs(left.second - right.second) <= 1;
     if(left.first && right.first && diff){
         ans.first = true;

@@ -55,15 +55,19 @@ struct Node
 pair<int, int> diameterFun(Node* root){
     if(root == NULL){
         pair<int, int> p = make_pair(0,0);
+        //first value of the pair is the diameter and 
+        //second value is height.
         return p;
     }
     
     pair<int, int> left = diameterFun(root->left);
     pair<int, int> right = diameterFun(root->right);
     
+    //the longest diameter could be present in the left side or right side
+    // or right+node+left.
     int op1 = left.first;
     int op2 = right.first;
-    int op3 = left.second + right.second + 1;
+    int op3 = left.second + right.second + 1;//height of left + height of right + parent node
     
     pair<int, int> ans;
     ans.first = max(op1, max(op2, op3));
