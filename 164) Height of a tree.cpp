@@ -63,7 +63,6 @@ int height(struct Node* node){
 //--------------------Iterative way----------------------------------
 int height(struct Node* node){
     queue<Node*> q;
-    vector<int> res;
     int count = 0;
     
     q.push(node);
@@ -79,7 +78,6 @@ int height(struct Node* node){
             }
         }
         else {
-            res.push_back(curr->data);
             if(curr->left){
                 q.push(curr->left);
             }

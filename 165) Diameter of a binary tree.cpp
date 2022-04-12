@@ -29,7 +29,6 @@ Constraints:
 
     Expected Time Complexity: O(N).
     Expected Auxiliary Space: O(Height of the Tree).
-
 */
 
 #include<iostream>
@@ -63,7 +62,7 @@ pair<int, int> diameterFun(Node* root){
     pair<int, int> left = diameterFun(root->left);
     pair<int, int> right = diameterFun(root->right);
     
-    //the longest diameter could be present in the left side or right side
+    //the longest diameter could be present on the left side or on the right side
     // or right+node+left.
     int op1 = left.first;
     int op2 = right.first;

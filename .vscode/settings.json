@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.ejs": "html",
+        "map": "cpp",
+        "source_location": "cpp",
+        "xutility": "cpp"
+    }
+}

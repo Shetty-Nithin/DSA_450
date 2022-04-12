@@ -81,6 +81,7 @@ void solve(Node* root, int k, vector<int> path, int &count){
             count++;
         }
     }
+    // path.pop_back();
 }
 
 int sumK(Node *root,int k)

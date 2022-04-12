@@ -5,18 +5,18 @@ Link : https://practice.geeksforgeeks.org/problems/level-order-traversal/1#
 
 Example 1:
     Input:
-        1
+          1
         /   \ 
-    3     2
+       3     2
     Output: 1 3 2
 
 Example 2:
     Input:
-            10
-            /      \
-        20       30
+               10
+             /    \
+           20     30
         /   \
-    40   60
+       40   60
     Output: 10 20 30 40 60
 
 

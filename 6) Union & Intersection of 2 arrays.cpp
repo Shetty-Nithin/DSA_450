@@ -51,3 +51,6 @@ int doUnion(int a[], int n, int b[], int m)  {
     
     return ans.size();
 }
+
+//To find intersection of 2 sets, we can use 2 <set>. First <set> is for storing all the different element from first set.
+//and second set is for storing all the intersection elements.
