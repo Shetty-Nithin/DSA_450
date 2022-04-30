@@ -20,7 +20,7 @@ class BinarySearchTree{
     public:
     Node* root;
 
-    BinarySearchTree(int d){
+    BinarySearchTree(){
         this->root = NULL;
     }
 
@@ -72,7 +72,7 @@ class BinarySearchTree{
         return false;
     }
 
-    void BSF(){   //level order traversal
+    void BFS(){   //level order traversal
         Node* node = this->root;
         queue<Node*> q;
         vector<int> res;
@@ -207,6 +207,12 @@ class BinarySearchTree{
                     this->root->data = mini;
 
                     this->root->right = deleteNode(mini);
+
+                    //OR
+                    // int maxi = maximum(root->left);
+                    // this->root->data = maxi;
+
+                    // this->root->left = deleteNode(maxi);
                 }
             }else if(this->root->data > d){
                 curr = curr->left;
@@ -220,10 +226,48 @@ class BinarySearchTree{
         for(int i : v){
             cout << i << ", ";
         }
+        cout << endl;
     }
 };
 
 
 int main(){
+   BinarySearchTree* tree = new BinarySearchTree();
+    tree->insert(5);
+    tree->insert(3);
+    tree->insert(2);
+    tree->insert(1);
+    tree->insert(4);
+    tree->insert(8); 
+    tree->insert(7);
+    tree->insert(6);
+    tree->insert(9);
+    tree->insert(10);
 
+    /*
+             5
+          /    \
+         3      8
+        / \    /  \
+      2    4  7    9
+     /       /      \
+    1       6       10
+
+    */
+    tree->BFS();
+    // 5 3 8 2 4 7 9 1 6 10
+    tree->DFS_postOrder();
+    // 1 2 4 3 6 7 10 9 8 5
+    tree->DFS_preOrder();
+    // 5 3 2 1 4 8 7 6 9 10
+    tree->DFS_inOrder();
+    // 1 2 3 4 5 6 7 8 9 10
+
+    cout<< tree->find(11) << endl;
+    cout<< tree->find(2) << endl;
+  
+    cout<< tree->minimum(tree->root) << endl;
+    cout<< tree->maximum(tree->root) << endl;
+  
+    // tree->deleteNode(1);
 }
