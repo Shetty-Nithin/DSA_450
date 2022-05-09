@@ -3,6 +3,8 @@
         "*.ejs": "html",
         "map": "cpp",
         "source_location": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "regex": "cpp",
+        "ostream": "cpp"
     }
 }
