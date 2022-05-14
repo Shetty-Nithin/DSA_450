@@ -5,6 +5,8 @@
         "source_location": "cpp",
         "xutility": "cpp",
         "regex": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "stack": "cpp",
+        "iostream": "cpp"
     }
 }
