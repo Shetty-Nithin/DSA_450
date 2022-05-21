@@ -7,6 +7,9 @@
         "regex": "cpp",
         "ostream": "cpp",
         "stack": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "filesystem": "cpp",
+        "locale": "cpp",
+        "xstring": "cpp"
     }
 }
