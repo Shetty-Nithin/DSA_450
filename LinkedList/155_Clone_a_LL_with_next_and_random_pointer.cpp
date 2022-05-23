@@ -180,9 +180,9 @@ class Solution
             cloneNext = cloneNode->next;
             
             originalNode->next = cloneNode;
-            originalNode = originalNext;
-            
             cloneNode->next = originalNode;
+            
+            originalNode = originalNext;
             cloneNode = cloneNext;
         }
         

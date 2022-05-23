@@ -105,4 +105,4 @@ class Solution{
     }
 };
 
-// Try the same problem in leetcode. Small variatin is present.
+// Try the same problem in leetcode. Small variation is present.
