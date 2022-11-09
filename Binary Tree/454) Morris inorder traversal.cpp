@@ -54,12 +54,13 @@ public:
     {
         vector<int> ans;
         Node* curr = root;
+        
         while(curr){
             if(curr->left == NULL){
                 ans.push_back(curr->data);
                 curr = curr->right;
             }else{
-                Node* pred = curr->left;
+                Node* pred = curr->left; //predeccesor
                 while(pred->right && pred->right != curr){
                     pred = pred->right;
                 }

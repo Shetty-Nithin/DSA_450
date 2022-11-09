@@ -3,6 +3,7 @@ Given a singly linked list of size N of integers. The task is to check
 if the given linked list is palindrome or not.
 
 Link : https://practice.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1
+Link : https://leetcode.com/problems/palindrome-linked-list/description/
 
 Example 1:
     Input:

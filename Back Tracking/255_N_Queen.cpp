@@ -46,7 +46,7 @@ bool isSafe(int row, int col, vector<vector<int>> &board, int n){
     int x = row;
     int y = col;
     while(y >= 0){
-        if(board[x][y] == 1){
+        if(board[x][y] == 1){ // making sure that Queen is not already placed in this row
             return false;
         }
         y--;
@@ -55,7 +55,7 @@ bool isSafe(int row, int col, vector<vector<int>> &board, int n){
     x = row;
     y = col;
     while(x >= 0 && y >= 0){
-        if(board[x][y] == 1){
+        if(board[x][y] == 1){ // checking that Queen is not already placed in diagonally (up left)
             return false;
         }
         x--;
@@ -64,7 +64,7 @@ bool isSafe(int row, int col, vector<vector<int>> &board, int n){
     
     x = row;
     y = col;
-    while(x < n && y >= 0){
+    while(x < n && y >= 0){ // checking that Queen is not already placed in this diagonnaly (down left)
         if(board[x][y] == 1){
             return false;
         }

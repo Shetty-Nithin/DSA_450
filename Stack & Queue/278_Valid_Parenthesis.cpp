@@ -5,6 +5,7 @@ For example, the function should return 'true'
 for exp = “[()]{}{[()()]()}” and 'false' for exp = “[(])”.
 
 Link : https://practice.geeksforgeeks.org/problems/parenthesis-checker2744/1
+Link : https://leetcode.com/problems/valid-parentheses/description/
 
 Example 1:
     Input:

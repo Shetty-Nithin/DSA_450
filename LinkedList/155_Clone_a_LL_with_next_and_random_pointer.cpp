@@ -174,15 +174,14 @@ class Solution
         Node* cloneNode = cloneHead;
         Node* originalNext;
         Node* cloneNext;
-        while(originalNode != NULL && cloneNode != NULL){
-            
+        while(originalNode != NULL && cloneNode != NULL){   
             originalNext = originalNode->next;
             cloneNext = cloneNode->next;
             
             originalNode->next = cloneNode;
-            cloneNode->next = originalNode;
-            
             originalNode = originalNext;
+            
+            cloneNode->next = originalNode;
             cloneNode = cloneNext;
         }
         

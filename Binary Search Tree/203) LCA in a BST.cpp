@@ -2,6 +2,7 @@
 Given a Binary Search Tree (with all values unique) and two node values.
 Find the Lowest Common Ancestors of the two nodes in the BST.
 Link : https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1
+Link : https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/submissions/
 
 Example 1:
     Input:

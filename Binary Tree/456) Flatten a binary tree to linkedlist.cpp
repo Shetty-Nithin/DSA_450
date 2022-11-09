@@ -4,6 +4,7 @@ auxiliary data structure is not allowed. After flattening, left of
 each node should point to NULL and right should contain next node in
 preorder.
 Link : https://practice.geeksforgeeks.org/problems/flatten-binary-tree-to-linked-list/1
+Link : https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
 
 Example 1:
     Input : 

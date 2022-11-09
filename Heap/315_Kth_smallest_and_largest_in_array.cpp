@@ -4,6 +4,7 @@ array, the task is to find the Kth smallest element in the given array.
 It is given that all array elements are distinct.
 
 Link : https://practice.geeksforgeeks.org/problems/kth-smallest-element5635/1/
+Link : https://leetcode.com/problems/kth-largest-element-in-an-array/description/
 
 Example 1:
     Input:

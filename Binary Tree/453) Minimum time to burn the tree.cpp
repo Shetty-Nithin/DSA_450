@@ -64,3 +64,78 @@ struct Node
     }
 };
 
+Node* createParentMapping(Node* root, int target, map<Node*, Node*> &nodeToParent){
+    Node* res = NULL;
+    queue<Node*> q;
+    // creating the parent map and finding the targetNode.
+    q.push(root);
+    nodeToParent[root] = NULL;
+    
+    while(!q.empty()){
+        Node* temp = q.front();
+        q.pop();
+        
+        if(temp->data == target){
+            res = temp;
+        }
+        if(temp->left){
+            nodeToParent[temp->left] = temp;
+            q.push(temp->left);
+        }
+        if(temp->right){
+            nodeToParent[temp->right] = temp;
+            q.push(temp->right);
+        }
+    }
+    return res;
+}
+
+int min_time(Node* targetNode, map<Node*, Node*> nodeToParent){
+    
+    map<Node*, bool> visited;
+    queue<Node*> q;
+    int ans = 0;
+    
+    q.push(targetNode);
+    visited[targetNode] = true;
+    
+    while(!q.empty()){
+        
+        bool flag = false;
+        int size = q.size();
+        for(int i=0; i<size; i++){
+            
+            Node* temp = q.front();
+            q.pop();
+            
+            if(temp->left && !visited[temp->left]){
+                flag = true;
+                visited[temp->left] = true;
+                q.push(temp->left);
+            }
+            if(temp->right && !visited[temp->right]){
+                flag = true;
+                visited[temp->right] = true;
+                q.push(temp->right);
+            }
+            if(nodeToParent[temp] && !visited[nodeToParent[temp]]){
+                flag = true;
+                visited[nodeToParent[temp]] = true;
+                q.push(nodeToParent[temp]);
+            }
+        }
+        if(flag){
+            ans++;
+        }
+    }
+    return ans;
+}
+    
+int minTime(Node* root, int target) 
+{
+    map<Node*, Node*> nodeToParent;
+    
+    Node* targetNode = createParentMapping(root, target, nodeToParent);
+    int ans = min_time(targetNode, nodeToParent);
+    return ans;
+}

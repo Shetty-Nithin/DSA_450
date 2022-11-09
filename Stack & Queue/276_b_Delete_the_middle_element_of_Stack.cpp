@@ -59,7 +59,6 @@ class Solution
     void deleteMid(stack<int>&s, int sizeOfStack)
     {
         int count = 0;
-        
         solve(s, sizeOfStack, count);
     }
 };

@@ -57,9 +57,9 @@ class Solution
             s.pop();
             
             if(M[person1][person2] == 1){
-                s.push(person2);
+                s.push(person2); // person 2 is celebrity
             }else{
-                s.push(person1);
+                s.push(person1); // if person 1 doesnt know person2, it means, person1 could be the celebrity or there is no celebrity.
             }
         }
         
@@ -76,7 +76,7 @@ class Solution
             }
         }
         
-        if(zeroCount != n || oneCount != n-1){
+        if(zeroCount != n || oneCount != n-1){ // horizontal and vertical
             return -1;
         }else{
             return ans;

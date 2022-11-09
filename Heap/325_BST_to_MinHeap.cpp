@@ -27,8 +27,60 @@ The given BST has been transformed into a Min Heap.
 #include<bits/stdc++.h>
 using namespace std;
 
+struct Node {
+    int data;
+    Node *left, *right;
+};
+
 class Solution {
-    public:
-    // save in inorder in array.
-    // fill the BT in preOrder using inorder array
+public:
+    void inorderTraversal(Node* root, vector<int>& arr){
+        if (root == NULL){
+            return;
+        }
+
+        inorderTraversal(root->left, arr);
+        arr.push_back(root->data);
+        inorderTraversal(root->right, arr);
+    }
+
+    Node* BSTToMinHeap(Node* root, vector<int> arr, int* i){
+        if (root == NULL){
+            return NULL;
+        }
+
+        root->data = arr[++*i];
+        root->left = BSTToMinHeap(root->left, arr, i);
+        root->right = BSTToMinHeap(root->right, arr, i);
+
+        return root;
+    }
+
+    Node* convertToMinHeapUtil(Node* root){
+        vector<int> arr;
+        int i = -1;
+    
+        inorderTraversal(root, arr);
+        return BSTToMinHeap(root, arr, &i);
+    }
+
+    void preorderTraversal(Node* root, vector<int> &output){
+        if (!root) return;
+    
+        output.push_back(root->data);
+        preorderTraversal(root->left, output);
+        preorderTraversal(root->right, output);
+    }
+
+    vector<int> bstToMInHeap(Node* root){
+        vector<int> output;
+        root = convertToMinHeapUtil(root);
+        preorderTraversal(root, output);
+
+        for(auto i : output){
+            cout << i << ", ";
+        }cout << endl;
+        
+        return output;
+    }
 };

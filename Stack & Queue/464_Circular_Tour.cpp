@@ -10,6 +10,7 @@ complete circle without exhausting its petrol in between.
 Note :  Assume for 1 litre petrol, the truck can go 1 unit of distance.
 
 Link : https://practice.geeksforgeeks.org/problems/circular-tour/1
+Link : https://leetcode.com/problems/gas-station/description/
 
 Example 1:
     Input:
@@ -49,7 +50,6 @@ class Solution{
   public:
     int tour(petrolPump p[],int n)
     {
-       queue<int> q;
        int balance = 0;
        int deficite = 0;
        int start = 0;
@@ -59,12 +59,12 @@ class Solution{
            
            if(balance < 0){
                deficite += balance;
-               start = i+1;
+               start = i+1; // saving the starting point of the journey
                balance = 0;
            }
        }
        
-       if(deficite + balance > 0){
+       if(deficite + balance >= 0){
            return start;
        }else{
            return -1;

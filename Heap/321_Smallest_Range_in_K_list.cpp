@@ -6,6 +6,7 @@ found, return the first such range found.
 
 Link : https://practice.geeksforgeeks.org/problems/find-smallest-range-containing-elements-from-k-lists/1
 Link : https://www.codingninjas.com/codestudio/problems/smallest-range-from-k-sorted-list_1069356
+Link : https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/description/
 
 Example 1:
     Input:
@@ -90,7 +91,7 @@ class Solution {
                 start = mini;
                 end = maxi;
             }
-            if(temp->col + 1< n){
+            if(temp->col+1 < n){
                 maxi = max(maxi, a[temp->row][temp->col+1]);
                 min_heap.push(new Node(a[temp->row][temp->col+1], temp->row, temp->col+1));
             }else{

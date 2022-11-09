@@ -45,51 +45,49 @@ using namespace std;
 /**
   * Using DFS Algorithm
   **/
+class Solution {
+  public:
+    bool dfs(int node, vector<bool> &visited, vector<bool> &dfs_visited,
+            vector<int> adj[]){
+                
+            visited[node] = true;
+            dfs_visited[node] = true;
+            // dfs_visited  = true means, call is in progress.
+            // dfs_visited = false means, cal has not been called yet.
 
-
-bool checkCycleDFS(int node, unordered_map<int, bool> &visited, 
-                   unordered_map<int, bool> &dfs_visited, 
-                   unordered_map<int, list<int>> &adjList){
-    
-    visited[node] = true;
-    dfs_visited[node] = true;
-    
-    for(auto neighbour:adjList[node]){
-        if(!visited[neighbour]){
-            bool cycleDetected = checkCycleDFS(neighbour, visited, dfs_visited, adjList);
-            if(cycleDetected){
-                return true;
+            // If n the node does not have any adjacent node or no cycle 
+            // found which include this node, then dfs_visited[node] 
+            // will become false. And the same process will repeat if
+            // there are any nodes remaining in the graph else returns false.
+            
+            for(auto neighbour : adj[node]){
+                if(!visited[neighbour]){
+                    if(dfs(neighbour, visited, dfs_visited, adj)){
+                        return true;
+                    }
+                }else if(dfs_visited[neighbour]){ // dfs_visited[neighbour] = true from the other way of the cyclic path.
+                    return true;                  // so cycle is present.
+                }
             }
-        }else if(dfs_visited[neighbour]){
-            return true;
-        }
+            
+            dfs_visited[node] = false; // back tracking
+            return false;
     }
-    dfs_visited[node] = false;
-    return false;
-}
-
-int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {   
-    unordered_map<int, list<int>> adjList;
-    for(int i=0; i<edges.size(); i++){
-        int u = edges[i].first;
-        int v = edges[i].second;
+    // Function to detect cycle in a directed graph.
+    bool isCyclic(int V, vector<int> adj[]) {
+        vector<bool> visited(V, 0);
+        vector<bool> dfs_visited(V, false);
         
-        adjList[u].push_back(v);
+        for(int i=0; i<V; i++){
+            if(!visited[i]){
+                if(dfs(i, visited, dfs_visited, adj)){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
-    
-    // calling DFS for all the components.
-    unordered_map<int, bool> visited;
-    unordered_map<int, bool> dfs_visited;
-    for(int i=1; i<=n; i++){
-       if(!visited[i]){
-           bool cycleFound = checkCycleDFS(i, visited, dfs_visited, adjList);
-           if(cycleFound){
-               return true;
-           }
-       } 
-    }
-    return false;
-}
+};
 
 
 
@@ -103,10 +101,10 @@ int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {
         int u = edges[i].first - 1;
         int v = edges[i].second - 1;
         
-        adjList[u].push_back(v);
+        adjList[u].push_back(v); // directed graph
     }
     
-    //find all indegrees
+    // Find all indegrees
     vector<int> inDegree(n);
     for(auto i: adjList){
         for(auto j: i.second){
@@ -114,7 +112,7 @@ int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {
         }
     }
     
-    // push '0' inDegree
+    // Push '0' inDegree to the queue
     queue<int> q;
     for(int i=0; i<n; i++){
         if(inDegree[i] == 0){

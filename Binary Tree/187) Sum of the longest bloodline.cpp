@@ -9,8 +9,8 @@ Example 1:
           2   5      
          / \ / \     
         7  1 2  3    
-       /
-      6
+          /
+         6
     Output: 13
     Explanation:
             4        
@@ -18,8 +18,8 @@ Example 1:
           2   5      
          / \ / \     
         7  1 2  3 
-       /
-      6
+          /
+         6
 
     The highlighted nodes (4, 2, 1, 6) above are 
     part of the longest root to leaf path having
@@ -81,8 +81,8 @@ void solve(Node* root, pair<int, int> &ans, int currPathLen, int currPathSum){
 int sumOfLongRootToLeafPath(Node *root)
 {
     pair<int, int> ans = make_pair(0, 0);
-    int currPathLen = 0;
     int currPathSum = 0;
+    int currPathLen = 0;
     
     if(root == NULL){
         return currPathSum;

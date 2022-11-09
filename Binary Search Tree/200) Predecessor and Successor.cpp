@@ -58,17 +58,14 @@ void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
 
     if (root->key == key)
     {
-        if (root->left != NULL)
-        {
+        if (root->left != NULL){
             Node* tmp = root->left;
             while (tmp->right){
                 tmp = tmp->right;
             }
             pre = tmp;
         }
- 
-        if (root->right != NULL)
-        {
+        if (root->right != NULL){
             Node* tmp = root->right;
             while (tmp->left){
                 tmp = tmp->left;
@@ -77,9 +74,7 @@ void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
         }
         return ;
     }
- 
-    if (root->key > key)
-    {
+    else if (root->key > key){
         suc = root ;
         findPreSuc(root->left, pre, suc, key) ;
     }

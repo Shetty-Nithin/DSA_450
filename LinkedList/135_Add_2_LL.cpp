@@ -6,6 +6,7 @@ The sum list is a linked list representation of the addition of two
 input numbers from the last.
 
 Link : https://practice.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1
+Link : https://leetcode.com/problems/add-two-numbers-ii/description/
 
 Example 1:
     Input:
@@ -136,10 +137,11 @@ class Solution
     }
 };
 
+
+// approach 2: 
 class Solution
 {
     public:
-    //Function to add two numbers represented by linked list.
     Node* reverseList(Node *head){
         Node* prev = NULL;
         Node* curr = head;
@@ -175,8 +177,7 @@ class Solution
         struct Node* ansHead = NULL;
         struct Node* ansTail = NULL;
         
-        while(first != NULL || second != NULL || carry != 0){
-            
+        while(first != NULL || second != NULL || carry != 0){  
             int val1 = 0;
             if(first != NULL){
                 val1 = first->data;

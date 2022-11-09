@@ -48,6 +48,7 @@ Constraints:
     Expected Auxilliary Space : O(n)
 */
 
+
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -61,6 +62,7 @@ int signum(int maxiSize, int miniSize){
 		return -1;
 	}
 }
+// Note : midian is greater than the max element of the max_heap and less than the smallest element of the min_heap.
 
 void callMedian(int element, priority_queue<int> &maxi,
 			   priority_queue<int, vector<int>, greater<int>> &mini, int &median){

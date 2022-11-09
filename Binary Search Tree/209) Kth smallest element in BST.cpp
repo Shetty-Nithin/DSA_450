@@ -1,6 +1,7 @@
 /*
 Given a BST and an integer K. Find the Kth Smallest element in the BST.
 Link : https://practice.geeksforgeeks.org/problems/find-k-th-smallest-element-in-bst/1
+Link : https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
 
 Example 1:
     Input:

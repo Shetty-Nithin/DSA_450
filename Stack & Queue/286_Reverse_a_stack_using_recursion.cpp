@@ -1,8 +1,6 @@
 /*
 Reverse a given stack of integers using recursion.
 Link : https://www.codingninjas.com/codestudio/problems/reverse-stack-using-recursion_631875
-
-
 */
 
 

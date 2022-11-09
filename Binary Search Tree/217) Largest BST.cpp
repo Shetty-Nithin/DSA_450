@@ -62,13 +62,12 @@ class info {
         bool isBST;
         int size;
 };
+
 class Solution{
     public:
-    /*You are required to complete this method */
-    // Return the size of the largest sub-tree which is also a BST
     info solve(Node* root, int &maxSize){
         if(root == NULL){
-            return {INT_MIN, INT_MAX, true, 0};
+            return {INT_MAX, INT_MIN, true, 0};
         }
         
         info left = solve(root->left, maxSize);
@@ -84,8 +83,7 @@ class Solution{
         }else{
             currNode.isBST = false;
         }
-        
-        
+         
         if(currNode.isBST){
             maxSize = max(maxSize, currNode.size);
         }

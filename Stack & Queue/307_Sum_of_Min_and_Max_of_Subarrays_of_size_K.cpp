@@ -26,7 +26,9 @@ int solve(int *arr, int n, int k){
     deque<int> maxi(k);
     deque<int> mini(k);
 
-    for(int i=0; i<k; i++){
+    for(int i=0; i<k; i++){ 
+        // pushigng one max element to the maxi and one min
+        // element to the mini out of first k elements.
         while(!maxi.empty() && arr[maxi.back()] <= arr[i]){
             maxi.pop_back();
         }
@@ -40,14 +42,13 @@ int solve(int *arr, int n, int k){
 
     int ans = 0;
     for(int i=k; i<n ;i++){
-
         ans += arr[maxi.front()] + arr[mini.front()];
 
-        while(!maxi.empty() && maxi.front() <= i-k){
+        while(!maxi.empty() && maxi.front() <= i-k){ // if maxi.front() index is not in the range then remove from the maxi
             maxi.pop_front();
         }
 
-        while(!mini.empty() && mini.front() <= i-k){
+        while(!mini.empty() && mini.front() <= i-k){ // or i-mini.front() >= k
             mini.pop_front();
         }
 
@@ -61,7 +62,7 @@ int solve(int *arr, int n, int k){
         maxi.push_back(i);
         mini.push_back(i);
     }
-    ans += arr[maxi.front()] + arr[mini.front()];
+    return ans += arr[maxi.front()] + arr[mini.front()];
 }
 
 int main(){

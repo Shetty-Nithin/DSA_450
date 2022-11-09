@@ -1,6 +1,7 @@
 /*
 Given 2 Arrays of Inorder and preorder traversal. Construct a tree and print the Postorder traversal.
 Link : https://practice.geeksforgeeks.org/problems/construct-tree-1/1
+Link : https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/submissions/
 
 Example 1:
     Input:
@@ -57,8 +58,7 @@ int findPosition(int in[], int element, int size){
     return -1;
 }
     
-Node* solve(int in[], int pre[], int &preOrderIndex, 
-                        int inOrderStart, int inOrderEnd, int size){
+Node* solve(int in[], int pre[], int &preOrderIndex, int inOrderStart, int inOrderEnd, int size){
     if(preOrderIndex >= size || inOrderStart > inOrderEnd){
         return NULL;
     }
@@ -73,7 +73,7 @@ Node* solve(int in[], int pre[], int &preOrderIndex,
     
     return root;
     
-}
+}    
     
 Node* buildTree(int in[],int pre[], int n)
 {
@@ -117,9 +117,6 @@ Node* buildTree(int in[],int pre[], int n)
     
     return ans;
 }
-
-
-
 
 
 

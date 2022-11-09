@@ -72,20 +72,20 @@ class Solution{
         
         int area = INT_MIN;
         for(int i=0; i<n; i++){
-            int l = heights[i];
+            int h = heights[i];
             
             if(next[i] == -1){
                 next[i] = n;
             }
             int b = next[i] - prev[i] - 1;
             
-            int newArea = l*b;
+            int newArea = h*b;
             area = max(area, newArea);
         }
         
         return area;
     }
-  public:
+  public:            // n    m
     int maxArea(int M[1000][1000], int n, int m) {
         
         int area = largestRectangleArea(M[0], m);

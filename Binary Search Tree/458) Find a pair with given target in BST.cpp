@@ -52,8 +52,6 @@ struct Node {
 
 class Solution{
   public:
-    // root : the root Node of the given BST
-    // target : the target sum
     void inOrder(struct Node* root, vector<int> &v){
         if(root == NULL){
             return;
@@ -72,7 +70,7 @@ class Solution{
         int j=v.size()-1;
         while(i<j){
             if(v[i]+v[j] == target){
-                return 1;
+                return 1; // TRUE or FALSE
             }
             else if(v[i]+v[j] < target){
                 i++;

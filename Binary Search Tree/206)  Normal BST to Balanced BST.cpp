@@ -2,6 +2,7 @@
 Given a BST (Binary Search Tree) that may be unbalanced, convert it
 into a balanced BST that has minimum possible height.
 Link : https://practice.geeksforgeeks.org/problems/normal-bst-to-balanced-bst/1/
+Link : https://leetcode.com/problems/balance-a-binary-search-tree/description/
 
 Examples 1:
     Input:
@@ -63,7 +64,6 @@ void inOrder(Node* root, vector<int> &v){
     inOrder(root->left, v);
     v.push_back(root->data);
     inOrder(root->right, v);
-    
 }
 
 Node* inOrderToBST(int start, int end, vector<int> &v){

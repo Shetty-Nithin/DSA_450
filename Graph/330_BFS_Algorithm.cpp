@@ -1,5 +1,5 @@
 /*
-Given a directed graph. The task is to do Breadth First Traversal of 
+The task is to do Breadth First Traversal of 
 this graph starting from 0.
 Note: One can move from node u to node v only if there's an edge from 
 u to v and find the BFS traversal of the graph starting from the 0th 
@@ -39,8 +39,10 @@ Constraints:
     Expected Auxiliary Space: O(V)
 
 */
-// was getting TLE on submittin.
 
+
+// was getting TLE on submittin.
+// This is on undirected graph.
 #include<iostream>
 #include<unordered_map>
 #include<queue>
@@ -78,8 +80,7 @@ void bfs_fun(unordered_map<int, set<int>> &adjList, unordered_map<int, bool> &vi
     }
 }
 
-vector<int> BFS(int vertex, vector<pair<int, int>> edges)
-{
+vector<int> BFS(int vertex, vector<pair<int, int>> edges){
     unordered_map<int, set<int>> adjList;
     vector<int> ans;
     unordered_map<int, bool> visited;
@@ -95,6 +96,8 @@ vector<int> BFS(int vertex, vector<pair<int, int>> edges)
     return ans;
 }
 
+
+// apporach 2:
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;

@@ -1,6 +1,7 @@
 /*
 Given a linked list of N nodes. The task is to reverse this list.
 Link : https://practice.geeksforgeeks.org/problems/reverse-a-linked-list/1/
+Link : https://leetcode.com/problems/reverse-linked-list/description/
 
 Example 1:
     Input:

@@ -13,6 +13,14 @@ Constraints:
     Sum of E over all testcases will not exceed 25*10^6
 */
 
+/**
+ * Note : 3 steps of Kosaraju's algorithm
+ *        1. topological sort
+ *        2. transpose the graph
+ *        3. count the scc by applying dfs 
+*/
+
+
 
 #include<iostream>
 #include<bits/stdc++.h>
@@ -26,7 +34,7 @@ void dfs(int node, unordered_map<int, bool> &visited, stack<int> &st,
         if(!visited[neighbour]){
             dfs(neighbour, visited, st, adjList);
         }
-    }
+    }   
     st.push(node);
 }
 
@@ -41,8 +49,7 @@ void revDFS(int node, unordered_map<int, bool> &visited,
     }
 }
 
-int stronglyConnectedComponents(int v, vector<vector<int>> &edges)
-{
+int stronglyConnectedComponents(int v, vector<vector<int>> &edges){
     // adjacency list
 	unordered_map<int, list<int>> adjList;
     for(int i=0; i<edges.size(); i++){

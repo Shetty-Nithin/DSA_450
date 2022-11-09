@@ -56,33 +56,42 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
         int v = vec[i][1];
         int w = vec[i][2];
         
-        adjList[u].push_back(make_pair(v, w));
-        adjList[v].push_back(make_pair(u, w));
+        adjList[u].push_back(make_pair(v, w)); // map( u : list{[first, second],[first, second],...} )
+        adjList[v].push_back(make_pair(u, w)); // map( v : list{[first, second],[first, second],...} )
     }
     
     vector<int> dist(vertices);
     for(int i=0; i<vertices; i++){
         dist[i] = INT_MAX;
     }
-    
-    set<pair<int, int>> st;
     dist[source] = 0;
+
+           // dist, node
+    set<pair<int, int>> st; // to keep in sorted order.
     st.insert(make_pair(0, source));
     
     while(!st.empty()){
         auto top = *(st.begin());
+        st.erase(st.begin()); //removing the begining node (like queue in BFS)
         
         int nodeDist = top.first;
         int topNode = top.second;
-        st.erase(st.begin()); //removing the top node
-        
+                 //(v, w)
         for(auto neighbour : adjList[topNode]){
-            if(nodeDist + neighbour.second < dist[neighbour.first]){
+            // updating the smallest distance from cucrent node to its neighbour node.
+            if(nodeDist + neighbour.second < dist[neighbour.first]){ // if current dist is less than existing dist
+
+            // ------------ [Optional] --------------
+                //checking if the node neighbour is alreday exists the set.
                 auto record = st.find(make_pair(dist[neighbour.first], neighbour.first));
+                
+                //deleting the existing entry of the node neighbour from the set.
+                //The reason is already existing data's distance will be more than the current dist.
                 if(record != st.end()){
                     st.erase(record);
                 }
-                
+            // ------------ [Optional] --------------
+
                 dist[neighbour.first] = nodeDist + neighbour.second;
                 st.insert(make_pair(dist[neighbour.first], neighbour.first));
             }
@@ -90,3 +99,4 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
     }
     return dist;
 }
+ 

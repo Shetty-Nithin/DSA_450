@@ -3,6 +3,7 @@ Given a linked list of N nodes. The task is to check if the linked list
 has a loop. Linked list can contain self loop.
 
 Link : https://practice.geeksforgeeks.org/problems/detect-loop-in-linked-list/1
+Link : https://leetcode.com/problems/linked-list-cycle-ii/description/
 
 Example 1:
     Input:

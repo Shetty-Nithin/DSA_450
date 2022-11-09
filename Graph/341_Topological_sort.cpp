@@ -32,8 +32,6 @@ Example 2:
        2                  /
         \------>3<-------/
 
-
-
     Output:
     1
 
@@ -43,7 +41,7 @@ Example 2:
     test cases. One possible Topological order for the graph is 5, 4, 2, 1, 3, 0.
 */
 
-
+// Note : u should come before v. Thats why only in DAG, we can apply topological sort.
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -52,12 +50,12 @@ using namespace std;
  * Using DFS Algorithm
  * 
  */
-void topologicalSort(int node, vector<bool> &visited,
+void topo_Sort(int node, vector<bool> &visited,
                     stack<int> &stk, unordered_map<int, list<int>> &adjList){
     visited[node] = 1;
     for(auto neighbour:adjList[node]){
         if(!visited[neighbour]){
-            topologicalSort(neighbour, visited, stk, adjList);
+            topo_Sort(neighbour, visited, stk, adjList);   
         }
     }
     stk.push(node);
@@ -77,7 +75,7 @@ vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
     stack<int> stk;
     for(int i=0; i<v; i++){
         if(!visited[i]){
-            topologicalSort(i, visited, stk, adjList);
+            topo_Sort(i, visited, stk, adjList);
         }
     }
     
@@ -93,7 +91,7 @@ vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
 
 
 /**
- * Using Kahn's Algorithm or jBFS Algorithm
+ * Using Kahn's Algorithm or BFS Algorithm
  * 
  */
 vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {

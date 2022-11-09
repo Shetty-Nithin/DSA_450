@@ -13,8 +13,8 @@ private:
     int *front;
     int *rear;
     int *arr;
-    int freeSpot;
     int *next;
+    int freeSpot;
 public: 
     kQueue(int n, int k){
         this->n = n;

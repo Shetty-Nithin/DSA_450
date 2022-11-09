@@ -88,8 +88,8 @@ vector<int> postorderTraversal(TreeNode* root){
             TreeNode* temp = st.top()->right;
             if(temp == NULL){
                 temp = st.top();
+                st.pop(); 
                 res.push_back(temp->val);
-                st.pop();
 
                 while(!st.empty() && temp == st.top()->right){
                     temp = st.top();

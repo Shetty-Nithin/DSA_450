@@ -5,6 +5,7 @@ Note: Try not to use extra space. Expected time complexity is O(N).
       The nodes are arranged in a sorted way.
 
 Link : https://practice.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/1
+Link : https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
 
 Example 1:
     Input:

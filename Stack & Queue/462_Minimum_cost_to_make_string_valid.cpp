@@ -12,6 +12,8 @@ For example, if s = "()))", you can insert an opening parenthesis to
 be "(()))" or a closing parenthesis to be "())))".
 Return the minimum number of moves required to make s valid.
 
+Link : https://www.codingninjas.com/codestudio/problems/minimum-cost-to-make-string-valid_1115770
+
 Example 1:
     Input: s = "())"
     Output: 1
@@ -57,7 +59,7 @@ public:
     }
 };
 
-// counting in the for loop itself.
+// approach 2 : counting in the for loop itself.
 class Solution {
 public:
     int minAddToMakeValid(string s) {

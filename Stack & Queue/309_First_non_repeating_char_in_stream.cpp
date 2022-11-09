@@ -47,7 +47,6 @@ class Solution {
 	    string ans = "";
 	    
 	    for(int i=0; i<A.length(); i++){
-	        
 	        char ch = A[i];
 	        count[ch]++;
 	        q.push(A[i]);

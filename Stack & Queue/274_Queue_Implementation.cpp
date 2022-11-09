@@ -6,10 +6,9 @@ Implementation of Queue
 using namespace std;
 
 // approach 1 : Using Arrays
-
 class queue{
-    int size;
     int *arr;
+    int size;
     int q_front;
     int q_rear;
 
@@ -71,8 +70,6 @@ class queue{
 
 
 // approach 2 : Using Linked list
-
-
 // Circular Linked List
 class MyCircularQueue {
     int *arr;

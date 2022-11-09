@@ -35,7 +35,7 @@ class Heap {
     int size = 0;
 
     Heap(){
-        arr[0] = -1;
+        arr[0] = -1; // making 1-based index
         size = 0;
     }
 
@@ -66,7 +66,7 @@ class Heap {
         arr[1] = arr[size]; // replacing first node with last node.
         size--; // deleting the last node;
 
-        // bubble down
+        // sink down
         int i=1;
         while(i < size){
             int leftNodeIndex = 2*i;
@@ -84,6 +84,7 @@ class Heap {
         }
     }
 
+    // Note : leaf nodes will be present from n/2+1 to nth position in heaps. Therefore we can run the loop only for 1 - n/2;
     void heapify(int arr[], int n, int i){
         int largest = i;
         int leftNodeIndex = 2*i;

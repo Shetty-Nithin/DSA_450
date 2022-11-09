@@ -98,7 +98,7 @@ class Solution
         
         Node* zeroHead = new Node(-1);
         Node* zeroTail = zeroHead;
-        
+      
         Node* oneHead = new Node(-1);
         Node* oneTail = oneHead;
         

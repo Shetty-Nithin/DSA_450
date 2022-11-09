@@ -5,11 +5,11 @@ Link : https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/1
 
 Example 1:
     Input:
-        1
+         1
         /
-    2
+       2
         \
-        3 
+         3 
     Output: 0
     Explanation: The max difference in height
     of left subtree and right subtree is 2,
@@ -17,10 +17,10 @@ Example 1:
 
 Example 2:
     Input:
-        10
-        /   \
+          10
+         /   \
         20   30 
-    /   \
+      /   \
     40   60
     Output: 1
     Explanation: The max difference in height
@@ -55,7 +55,7 @@ struct Node
 
 pair<bool, int> balancedCheck(Node* root){
     if(root == NULL){
-        pair<bool, int> p = make_pair(true, 0);
+        pair<bool, int> p = make_pair(true, 0); 
         return p;
     }
     
@@ -74,7 +74,7 @@ pair<bool, int> balancedCheck(Node* root){
     
     return ans;
 }
-//Function to check whether a binary tree is balanced or not.
+
 bool isBalanced(Node *root)
 {
     return balancedCheck(root).first;

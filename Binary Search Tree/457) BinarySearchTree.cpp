@@ -34,19 +34,19 @@ class BinarySearchTree{
             Node* curr = this->root;
             while(true){
                 if(d == curr->data){
-                    // return root;
+                    return root;
                 }
                 if(d < curr->data){
                     if(curr->left == NULL){
                         curr->left = newNode;
-                        // return root;
+                        return root;
                     }else{
                         curr = curr->left;
                     }
                 }else if(d > curr->data){
                     if(curr->right == NULL){
                         curr->right = newNode;
-                        // return root;
+                        return root;
                     }else{
                         curr = curr->right;
                     }

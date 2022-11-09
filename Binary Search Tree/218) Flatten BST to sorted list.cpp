@@ -5,6 +5,7 @@ the nodes at its right, and its left node must be NULL after flattening.
 We must do it in O(H) extra space where ‘H’ is the height of BST.
 
 Link : https://www.geeksforgeeks.org/flatten-bst-to-sorted-list-increasing-order/
+Link : https://leetcode.com/problems/flatten-binary-tree-to-linked-list/submissions/
 
 Examples 1: 
     Input: 
@@ -77,4 +78,3 @@ Node* flatten(Node* root){
 
     return newRoot;
 }
-

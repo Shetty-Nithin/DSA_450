@@ -99,11 +99,19 @@ public:
         }
         ans.push_back(root->data);
         
-        traverseLeft(root->left, ans);
+        traverseLeft(root->left, ans); // left
         traverseLeaf(root->left, ans);
         traverseLeaf(root->right, ans);
-        traverseRight(root->right, ans);
+        traverseRight(root->right, ans); // right
         
         return ans;
     }
 };
+
+/*
+Line 103 and 104 can be replaced by following code
+
+        if(root->left || root->right){
+            traverseLeaf(root, ans);
+        }
+*/

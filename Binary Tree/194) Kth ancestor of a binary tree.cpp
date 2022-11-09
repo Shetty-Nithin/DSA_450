@@ -67,6 +67,7 @@ Node* solve(Node* root, int &k, int node){
     if(leftAns != NULL && rightAns == NULL){
         k--;
         if(k == 0){
+            // k = INT_MAX; if we use k <= 0 instead of k == 0
             return root;
         }
         return leftAns;
@@ -74,6 +75,7 @@ Node* solve(Node* root, int &k, int node){
     if(leftAns == NULL && rightAns != NULL){
         k--;
         if(k == 0){
+            // k = INT_MAX;
             return root;
         }
         return rightAns;

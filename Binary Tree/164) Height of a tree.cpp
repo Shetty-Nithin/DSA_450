@@ -67,6 +67,7 @@ int height(struct Node* node){
     
     q.push(node);
     q.push(NULL);
+    
     while(!q.empty()){
         Node* curr = q.front();
         q.pop();

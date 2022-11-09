@@ -44,7 +44,6 @@ Constraints:
 */
 
 
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -80,5 +79,32 @@ class Solution
     bool isBST(Node* root) 
     {
         return isBST(root, INT_MIN, INT_MAX);
+    }
+};
+
+
+// Approach 2 : 
+class Solution{
+    private:
+        void inOrder(Node* root, vector<int> &in){
+            if(root == NULL) return;
+            
+            inOrder(root->left, in);
+            in.push_back(root->data);
+            inOrder(root->right, in);
+        }
+
+    public:
+    bool isBST(Node* root) 
+    {
+        vector<int> in;
+        inOrder(root, in);
+        
+        for(int i=0; i<in.size()-1; i++){
+            if(in[i] > in[i+1]){
+                return false;
+            }
+        }
+        return true;
     }
 };

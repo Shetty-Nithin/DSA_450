@@ -5,6 +5,7 @@ If the number of nodes is not a multiple of k then left-out nodes,
 in the end, should be considered as a group and must be reversed.
 
 Link : https://practice.geeksforgeeks.org/problems/reverse-a-linked-list-in-groups-of-given-size/1
+Link : https://leetcode.com/problems/reverse-nodes-in-k-group/description/
 
 Example 1:
     Input:
@@ -54,13 +55,13 @@ class Solution
     public:
     struct node *reverse (struct node *head, int k)
     { 
-        // if(head == NULL){
-        //     return NULL;
-        // }
+        if(head == NULL){
+            return NULL;
+        }
 
         node* prev = NULL;
         node* curr = head;
-        node* backup = NULL;
+        node* backup = curr->next;
         int count = 0;
         
         while(curr != NULL && count != k){

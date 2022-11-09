@@ -19,7 +19,7 @@ Example 2:
     Input:
     N = 8
     arr[] = {7 2 8 9 1 3 6 5}
-
+             0 1 2 3 4 5 6 7 - index
     Output: 16
 
     Explanation: Maximum size of the histogram 
@@ -50,7 +50,7 @@ private:
             while(s.top() != -1 && arr[s.top()] >= arr[i]){
                 s.pop();
             }
-            ans[i] = s.top();
+            ans[i] = s.top(); // next smaller element for arr[i]
             s.push(i);
         }
         return ans;
@@ -83,14 +83,14 @@ public:
         
         int area = INT_MIN;
         for(int i=0; i<n; i++){
-            int l = heights[i];
+            int h = heights[i];
             
             if(next[i] == -1){
                 next[i] = n;
             }
             int b = next[i] - prev[i] - 1;
             
-            int newArea = l*b;
+            int newArea = h*b;
             area = max(area, newArea);
         }
         

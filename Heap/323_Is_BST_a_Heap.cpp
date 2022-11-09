@@ -67,7 +67,7 @@ class Solution {
         
         if(index >= totalCount){
             return false;
-        }else{
+        }else{                 // node  &  its position
             bool left = isCBT(root->left, 2*index+1, totalCount);
             bool right = isCBT(root->right, 2*index+2, totalCount);
             
@@ -82,7 +82,7 @@ class Solution {
         
         if(root->right == NULL){
             return (root->data > root->left->data);
-        }else{
+        }else{ // root->right is not checking because, itis already verified in isCBT. (no such combination with left = null and right != null)
             bool left = isMaxOrder(root->left);
             bool right = isMaxOrder(root->right);
             

@@ -4,6 +4,7 @@ Given a Binary Tree with all unique values and two nodes value, n1 and n2.
 The task is to find the lowest common ancestor of the given two nodes.
 We may assume that either both n1 and n2 are present in the tree or none of them are present.
 Link : https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1
+Link : https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
 
 Example 1:
     Input:

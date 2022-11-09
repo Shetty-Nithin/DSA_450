@@ -41,10 +41,10 @@ struct Node {
 };
 
 vector<int> verticalOrder(Node *root)
-{
+{  //   horiz   vert         nodes
     map<int, map<int, vector<int>>> nodes;
     vector<int> ans;
-    queue<pair<Node*, pair<int, int>>> q;
+    queue<pair<Node*, pair<int, int>>> q; // node, horizontal_dist, vertical_depth
     
     if(root == NULL){
         return ans;
@@ -56,8 +56,8 @@ vector<int> verticalOrder(Node *root)
         q.pop();
         
         Node* frontNode = temp.first;
-        int hd = temp.second.first;//horizontal distance
-        int level = temp.second.second;
+        int hd = temp.second.first;//horizontal_distance
+        int level = temp.second.second; // vertical_depth
         
         nodes[hd][level].push_back(frontNode->data);
         
@@ -69,9 +69,9 @@ vector<int> verticalOrder(Node *root)
         }
     }
     
-    for(auto i : nodes){
-        for(auto j : i.second){
-            for(auto k : j.second){
+    for(auto i : nodes){ // horizontal key_value pair, i = {vertical_depths}
+        for(auto j : i.second){ // veritcal key_value pair, j = {particular_vertical_depth : vector}
+            for(auto k : j.second){ // items inside the vector, k = vector values
                 ans.push_back(k);
             }
         }

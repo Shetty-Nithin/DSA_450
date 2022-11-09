@@ -38,7 +38,6 @@ void inorderIterative(Node* root)
     stack<Node*> stack;
  
     Node* curr = root;
- 
     while (!stack.empty() || curr != NULL)
     {
         if (curr != NULL)

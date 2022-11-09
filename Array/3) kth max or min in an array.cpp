@@ -76,21 +76,21 @@ int get_CorrectIndex(int *arr, int start, int end){
 }
 
 int quickSort(int *arr, int start, int end, int k){
-  if(start == end){
-    return arr[start];
-  }
-  
-  int res;
-  int correctPivotIndex = get_CorrectIndex(arr, start, end);
+    if(start == end){
+      	return arr[start];
+    }
+    
+    int res;
+    int correctPivotIndex = get_CorrectIndex(arr, start, end);
 
-  if(correctPivotIndex == k-1){
-    return arr[correctPivotIndex];
-  }
-  else if( correctPivotIndex < k){
-    res = quickSort(arr, correctPivotIndex+1, end, k);
-  }
-  else{
-    res = quickSort(arr, start, correctPivotIndex-1, k);
-  } 
-  return res;
+    if(correctPivotIndex == k-1){ // 0-based indexing 
+      	return arr[correctPivotIndex];
+    }
+    else if( correctPivotIndex < k){
+      	res = quickSort(arr, correctPivotIndex+1, end, k);
+    }
+    else{
+      	res = quickSort(arr, start, correctPivotIndex-1, k);
+    } 
+    return res;
 }

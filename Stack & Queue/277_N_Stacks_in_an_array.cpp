@@ -35,7 +35,7 @@ Example 1:
     pop(1): Pop the top element from the 1st stack. This returns 20.
     pop(2): Pop the top element from the 2nd stack. This returns 30.
 
-Example 1:
+Example 2:
     input
     1 5 5
     1 15 1
@@ -69,10 +69,9 @@ class NStack{
     int *next;
     int *top;
     
-    int n, s;
+    int n, s; // number of stacks and size of the array
     int freeSpot;
 public:
-    // Initialize your data structure.
     NStack(int N, int S)
     {
         n = N;
@@ -101,8 +100,8 @@ public:
         }
         
         int index = freeSpot;
-        freeSpot = next[index];
-        arr[index] = x;   
+        freeSpot = next[index]; // updating the freeSpot for next push
+        arr[index] = x;         // pushing the data into the array
         next[index] = top[m-1];
         top[m-1] = index;
         
