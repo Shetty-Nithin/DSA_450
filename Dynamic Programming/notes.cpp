@@ -1,6 +1,5 @@
-/*
-------------------Dyanmic Programming--------------------
-
+/*              Dyanmic Programming
+                ___________________
 
 1.  How to recognize DP?
 ->  Choice will be given
@@ -282,13 +281,368 @@
         Longest Palindromic Subsequence is the LCSubsequence of A & B. 
         
     xiii. Minimum number of deletion in a string to make it a palindrome.
-        Find Longest Palindromic Subsequence(LPS) of a gien string str.
-        return len(str)-LPSubsequence      
+        Find Longest Palindromic Subsequence(LPS) of a given string str.
+        return len(str)-LPSubsequence  
+
+    xiv.     
+        Number of Insertion = Number of Deletion
+
+6.  Matrix Chain Multiplication
+    i. MCM
+    ii. Printing MCM
+    iii. Evaluate expression to true (or boolean parenthesis)
+    iv. Min/Max value of an expression
+    v. Palindrome partitioning
+    vi. Scramble string
+    vii. Egg dropping problem
+
+    format: 
+        ex: 10, 20, 30, 40, 50, 60, 70
+             i           k           j
+            i = near to left most index
+            j = near to right most index
+
+        if(i>j) return 0;
+
+        int ans = 0;
+        int temp = 0;
+        for(int k=i; k<j; k++){
+            temp = solve(arr, i, k) + solve(arr, i+1, j);
+            ans = function(temp);
+        }
+        return ans;
+
+    i.  MCM
+        1. Find i and j
+        2. Find the base case
+        3. Find the k loop scheme
+        4. Find ans from temp ans
+
+        // recurssion
+        if(i >= j) return 0;
+
+        int temp = 0;
+        int mini = INT_MAX;
+        for(int k=i; k<=j-1; k++){ // or for(int k=i+1; k<=j; k++)
+            int left = solve(arr, i, k);
+            int right = solve(arr, k+1, j);
+            int mulCost = arr[i-1] * arr[k] * arr[j]
+
+            temp = left * right * mullCost; 
+            mini = min(mini, temp);
+        }
+        return mini;
+
+        //memoization
+        vector<vector<int>> dp[i+1][j+1]; or 
+        int static t[1001][1001]; // global decalration
+
+        int solve(arr[], int i, int j, dp){
+            if(i >= j) return 0;
+            if(dp[i][j] != -1) return dp[i][j];
+
+            int temp = 0;
+            int mini = INT_MAX;
+            for(int k=i; k<=j-1; k++){ // or for(int k=i+1; k<=j; k++)
+                int left = solve(arr, i, k);
+                int right = solve(arr, k+1, j);
+                int mulCost = arr[i-1] * arr[k] * arr[j]
+
+                temp = left * right * mullCost; 
+                mini = min(mini, temp);
+            }
+            return dp[i][j] = mini;
+        }
+
+        int main(){
+            memset(dp, -1, sizeOf(dp));
+            solve(arr, 1, sizeOf(arr)-1)
+        }
+
+    iii. Evaluate expression to true (boolean parenthesis)
+
+        int solve(s, i, j, isTrue){
+            if(i > j) return false;
+            if(i == j){
+                if(isTrue == True) return s[i] == 'T'; 
+                else s[i] == 'F';
+            }
+
+            int ways = 0;
+            for(int k=i+1; k<=j-1; k+2){
+                int leftTrue = solve(s, i, k-1, T);
+                int rightTrue = solve(s, i, k-1, F);
+                int leftFalse = solve(s, k+1, j, T);
+                int rightFalse = solve(s, k+1, j, F);
+
+                if(s[k] == '&){
+                    if(isTrue == true){
+                        ways = ways + leftTrue*rightTrue
+                    }
+                    else{
+                        ways = ways + leftFalse*rightTrue + leftFalse*rightFalse + leftTrue*rightFalse;
+                    }
+                }
+                else if(s[k] == '|'){
+                    if(isTrue == True){
+                        ways = ways + leftTrue*rightTrue + leftTrue*rightFalse + leftFalse*rightTrue;
+                    }
+                    else{
+                        ways = ways + leftFalse*rightFalse;
+                    }
+                }
+                else if(s[k] == '^'){
+                    if(isTrue == True){
+                        ways = ways + leftFalse*rightTrue + leftTrue*rightFalse;
+                    }
+                    else{
+                        ways = ways + leftTrue*rightTrue + leftFalse*rightFalse;
+                    }
+                }
+            }
+            return ways;
+        }
+
+        //memoization/bottom-up
+        unordered_map<string, int> dp //global declaration of map
+
+        int solve(s, i, j, isTrue){
+            if(i > j) return false;
+            if(i == j){
+                if(isTrue == True) return s[i] == 'T'; 
+                else s[i] == 'F';
+            }
+
+            string temp = to.string(i);
+            temp.push_back(' ');
+            temp.append(to.string(j));
+            temp.push_back(' ');
+            temp.append(to.string(isTrue));
+
+            if(dp.find(temp) != dp.end()){
+                return mp[temp];
+            }
+
+            int ways = 0;
+            for(int k=i+1; k<=j-1; k+2){
+                int leftTrue = solve(s, i, k-1, T);
+                int rightTrue = solve(s, i, k-1, F);
+                int leftFalse = solve(s, k+1, j, T);
+                int rightFalse = solve(s, k+1, j, F);
+
+                if(s[k] == '&){
+                    if(isTrue == true){
+                        ways = ways + leftTrue*rightTrue
+                    }
+                    else{
+                        ways = ways + leftFalse*rightTrue + leftFalse*rightFalse + leftTrue*rightFalse;
+                    }
+                }
+                else if(s[k] == '|'){
+                    if(isTrue == True){
+                        ways = ways + leftTrue*rightTrue + leftTrue*rightFalse + leftFalse*rightTrue;
+                    }
+                    else{
+                        ways = ways + leftFalse*rightFalse;
+                    }
+                }
+                else if(s[k] == '^'){
+                    if(isTrue == True){
+                        ways = ways + leftFalse*rightTrue + leftTrue*rightFalse;
+                    }
+                    else{
+                        ways = ways + leftTrue*rightTrue + leftFalse*rightFalse;
+                    }
+                }
+            }
+            return dp[temp] = ways;
+        }
+
+        int main(){
+            dp.clear();
+            solve(s, i, j, true);
+        }
+
+    v.  Palindrome partitioning
+        // recurssion
+        bool isPalindrome(){
+            return true/false
+        }
+        int solve(){
+            if(i >= j) return 0;
+            if(isPalindrome(s, i, j)) return 0;
+
+            int ans = INT_MAX; 
+            for(int k=i; k<=j-1; k++){
+                int temp = 1 + solve(s, i, k) + solve(s, k+1, j);
+                ans = min(ans, temp);
+            }
+
+            return ans;
+        }
 
 
+    vi. Scramble string
+        bool condition_1(){
+            if(solve(a.substring(0, i), b.substring(n-i, i)) && 
+               solve(a.substring(i, n-i), b.substring(0, n-i))){
+                return true;
+            }
+            else return false;
+        }
+        bool condition_2(){
+            if(solve(a.substring(0, i), b.substring(0, i)) && 
+               solve(a.substring(i, n-i), b.substring(i, n-i))){
+                return true;
+            }
+            else return false;
+        }
+
+        bool solve(string a, string b){
+            if(a.compare(b) = 0) return true;
+            if(a.length() <= 1) return false;
+
+            int n = a.length();
+            bool flag = false; // means a and b are not scrambled for now.
+
+            for(int i=1; i<=n-1; i++){
+                if(condition_1() || condition_2()){
+                    flag = true;
+                    break;
+                }
+            }
+
+            return flag;
+        }
+
+        int main(){
+            string a;
+            string b;
+
+            if(a.length() != b.length()) return false;
+            if(a.empty() && b.empty()) return true;
+
+            return solve(a, b);
+        }
+        
+        
+    vii. Egg dropping problem
+
+        int solve(int e, int f){
+            if(e == 1) return f;
+            if(f == 0 || f == 1) return f;
+
+            int attempt = INT_MAX;
+            for(int k=0; k<f; k++){
+                int temp = 1 + max(solve(e-1, k-1), solve(e, f-k));
+                attempt = min(attempt, temp);
+            }
+
+            returm attempt;
+        }
+
+7. DP on Trees
+    i. General Syntax
+    ii. How dp can be applied to trees(Identification)
+    iii. Diameter of a Binary Tree
+    iv. Maximum path sum from any node any other node
+    v. Maximum path sum from leaf to leaf
+    vi. Diameter of N-array Tree.
 
 
+    i. General Syntax
+        int function(){
+            1. base condition
+            2. hypothesis
+            3. induction
+        }
+        
+
+        int solve(Node* root, int& res){
+            if(root == nullptr){ // base condition
+                return 0;
+            }
+
+            int left = solve(root->left, res); // hypothesis
+            int right = solve(root->right, res);
+
+            int temp = 1 + max(left, right);
+            int ans = max(temp, relation);
+            res = max(res, ans);
+
+            return temp;   
+        }
+
+        int main(){
+            int res = INT_MIN;
+            return solve(root, res);
+        }
 
 
+    iii. Diameter of a Binary Tree
+        int solve(Node* root, int& res){
+            if(root == nullptr){
+                return 0;
+            }
+
+            int left = solve(root->left, res);
+            int right = solve(root->right, res);
+
+            int temp = 1 + max(left, right);
+            int ans = max(temp, 1+left+right);
+            res = max(res, ans);
+            return res;
+        }
+
+        int main(){
+            int res = INT_MIN;
+            return solve(root, res);
+        }
+
+
+    iv. Maximum path sum from any node any other node
+        int solve(Node* root, int& res){
+            if(root == nullptr){
+                return 0;
+            }
+
+            int left = solve(root->left, res);
+            int right = solve(root->right, res);
+
+            int temp = max(max(left, right)+root->value, root->value);
+            int ans = max(temp, left+right+root->value);
+            res = max(res, ans);
+            return res;
+        }
+
+        int main(){
+            int res = INT_MIN;
+            return solve(root, res);
+        }
+
+
+    v. Maximum path sum from leaf to leaf
+        int solve(Node* root, int& res){
+            if(root == nullptr){
+                return 0;
+            }
+
+            int left = solve(root->left, res);
+            int right = solve(root->right, res);
+
+            int temp = max(left, right) + root->value;
+            if(root->left == nullptr && root->right == nullptr){
+                temp = max(temp, root->value); // redundant
+            }
+
+            int ans = max(temp, left+right+root->value);
+            res = max(res, ans);
+            return res;
+        }
+
+        int main(){
+            int res = INT_MIN;
+            return solve(root, res);
+        }
 
 */
