@@ -17,6 +17,19 @@ Example 1:
     Output: 1
     Explanation: 3 -> 3 is a cycle
 
+                adjList :   0 ---> 1
+                            1 ---> 2
+                            2 ---> 3
+                            3 ---> 3
+
+                            visited[] = 0, 1, 2, 3, 
+                            dfs_visited[] = 0, 1, 2, 3, 
+
+                            When 3 comes to the for loop, its neighbour is 3 itselt and its been visited 
+                            already. Hence if condition will fails and checks for the else if condition.
+                            If by now dfs_visited of this particular node is still true, then it means that
+                            its a cycle.
+
 Example 2:
     Input:
          0 -----> 1
@@ -53,7 +66,7 @@ class Solution {
             visited[node] = true;
             dfs_visited[node] = true;
             // dfs_visited  = true means, call is in progress.
-            // dfs_visited = false means, cal has not been called yet.
+            // dfs_visited = false means, call has not been called yet.
 
             // If n the node does not have any adjacent node or no cycle 
             // found which include this node, then dfs_visited[node] 
@@ -70,7 +83,9 @@ class Solution {
                 }
             }
             
-            dfs_visited[node] = false; // back tracking
+            // back tracking : If all the adjacent nodes are over or no adjacent node is presnet,
+            // then close the dfs_visited by making it as a false.
+            dfs_visited[node] = false;
             return false;
     }
     // Function to detect cycle in a directed graph.
@@ -98,7 +113,7 @@ class Solution {
  int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {   
     unordered_map<int, list<int>> adjList;
     for(int i=0; i<edges.size(); i++){
-        int u = edges[i].first - 1;
+        int u = edges[i].first - 1; // -1 because, in this example nodes are starting from 1.
         int v = edges[i].second - 1;
         
         adjList[u].push_back(v); // directed graph

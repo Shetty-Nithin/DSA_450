@@ -46,8 +46,7 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     struct Node *left;
     struct Node *right;
@@ -78,9 +77,8 @@ void solve(Node* root, pair<int, int> &ans, int currPathLen, int currPathSum){
     solve(root->left, ans, currPathLen, currPathSum);
     solve(root->right, ans, currPathLen, currPathSum);
 }
-int sumOfLongRootToLeafPath(Node *root)
-{
-    pair<int, int> ans = make_pair(0, 0);
+int sumOfLongRootToLeafPath(Node *root){
+    pair<int, int> ans = make_pair(0, 0); // (currPathSum, currPathLen)
     int currPathSum = 0;
     int currPathLen = 0;
     

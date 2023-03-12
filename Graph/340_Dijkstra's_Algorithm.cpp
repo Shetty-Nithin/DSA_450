@@ -60,11 +60,12 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
         adjList[v].push_back(make_pair(u, w)); // map( v : list{[first, second],[first, second],...} )
     }
     
+    // distance from node '0' to every other node is taken as INT_MAX initially.
     vector<int> dist(vertices);
     for(int i=0; i<vertices; i++){
         dist[i] = INT_MAX;
     }
-    dist[source] = 0;
+    dist[source] = 0; // By default '0' is considered as a source. And the distance betwen 0 to 0 is 0.
 
            // dist, node
     set<pair<int, int>> st; // to keep in sorted order.
@@ -87,6 +88,7 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
                 
                 //deleting the existing entry of the node neighbour from the set.
                 //The reason is already existing data's distance will be more than the current dist.
+                // And comparing with this out dated entry is no use.
                 if(record != st.end()){
                     st.erase(record);
                 }

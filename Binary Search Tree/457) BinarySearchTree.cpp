@@ -4,20 +4,20 @@
 using namespace std;
 
 class Node{
-    public:
-        int data;
-        Node* left;
-        Node* right;
+public:
+    int data;
+    Node* left;
+    Node* right;
 
-        Node(int d){
-            this->data = d;
-            this->left = NULL;
-            this->right = NULL;
-        }
+    Node(int d){
+        this->data = d;
+        this->left = NULL;
+        this->right = NULL;
+    }
 };
 
 class BinarySearchTree{
-    public:
+public:
     Node* root;
 
     BinarySearchTree(){
@@ -33,7 +33,7 @@ class BinarySearchTree{
         }else{
             Node* curr = this->root;
             while(true){
-                if(d == curr->data){
+                if(d == curr->data){ // if the data already exists, do nothing and return the root
                     return root;
                 }
                 if(d < curr->data){

@@ -99,7 +99,6 @@ class Graph {
 };
 
 int main(){
-
     int n;
     cout << "enter the number of nodes" << endl;
     cin >> n;

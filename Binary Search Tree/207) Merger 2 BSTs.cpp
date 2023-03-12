@@ -66,9 +66,7 @@ struct Node {
 
 
 //approach 1
-
-class Solution
-{
+class Solution{
     public:
     void inOrder(Node* rootNode, vector<int> &output){
         if(rootNode == NULL){
@@ -117,8 +115,7 @@ class Solution
         return root;
     }
     
-    vector<int> merge(Node *root1, Node *root2)
-    {
+    vector<int> merge(Node *root1, Node *root2){
         vector<int> inOrder1;
         vector<int> inOrder2;
         

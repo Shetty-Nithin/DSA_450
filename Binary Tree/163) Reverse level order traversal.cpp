@@ -35,15 +35,13 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     Node* left;
     Node* right;
 }; 
 
-vector<int> reverseLevelOrder(Node *root)
-{
+vector<int> reverseLevelOrder(Node *root){
     queue<Node*> q;
     vector<int> arr;
 
@@ -91,7 +89,6 @@ public:
         q.push(NULL);
         
         while(!q.empty()){
-            
             TreeNode* temp = q.front();
             q.pop();
             vector<int> curr_level;
@@ -114,7 +111,6 @@ public:
             }
             
             level_order_Reverse.push_back(curr_level);
-
         }
         
         reverse(level_order_Reverse.begin(), level_order_Reverse.end());

@@ -46,8 +46,7 @@ struct Node {
     }
 };
 
-vector <int> zigZagTraversal(Node* root)
-{
+vector <int> zigZagTraversal(Node* root){
     queue<Node*> q;
     vector<int> res;
     

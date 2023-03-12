@@ -32,8 +32,7 @@ Constraints:
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     struct Node* left;
     struct Node* right;
@@ -44,8 +43,7 @@ struct Node
     }
 };
 
-vector <int> preorder(Node* root)
-{
+vector <int> preorder(Node* root){
     vector<int> ans;
     Node* curr = root;
     
@@ -56,7 +54,7 @@ vector <int> preorder(Node* root)
             curr = curr->right;
         }else{
             Node* succ = curr->left;
-            while(succ->right && succ->right != curr){
+            while(succ->right && succ->right != curr){ // 2nd condition : we can use "succ->right != curr->right" (this makes more sence).
                 succ = succ->right;
             }
             if(succ->right == NULL){

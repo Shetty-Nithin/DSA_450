@@ -30,8 +30,7 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     struct Node* left;
     struct Node* right;
@@ -43,8 +42,7 @@ struct Node
 };
 
 //----------------------------Iterative way---------------------
-vector<int> leftView(Node *root)
-{
+vector<int> leftView(Node *root){
    vector<int> ans;
    if(root == NULL){
        return ans;
@@ -52,6 +50,8 @@ vector<int> leftView(Node *root)
    
    map<int, int> m;
    queue<pair<Node*, int>> q;
+   // Node* => node &
+   // int => level (vertically)
    
    q.push(make_pair(root, 0));
    while(!q.empty()){
@@ -87,12 +87,13 @@ void solve(Node* root, vector<int> &ans, int level){
     if(level == ans.size()){
         ans.push_back(root->data);
     }
+    // all the left node will be pushed the recurssive heap and
+    // the size of the stack will be same as the level of the BT.
     solve(root->left, ans, level+1);
     solve(root->right, ans, level+1);
 }
 
-vector<int> leftView(Node *root)
-{
+vector<int> leftView(Node *root){
     vector<int> ans;
     solve(root, ans, 0);
     

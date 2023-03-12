@@ -46,28 +46,27 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
 	int data;
 	struct Node *left, *right;
 };
 
-Node* solve(Node* root, int &k, int node){
+Node* solve(Node* root, int &k, int target){
     if(root == NULL){
         return NULL;
     }
     
-    if(root->data == node){
+    if(root->data == target){
         return root;
     }
     
-    Node* leftAns = solve(root->left, k, node);
-    Node* rightAns = solve(root->right, k, node);
+    Node* leftAns = solve(root->left, k, target);
+    Node* rightAns = solve(root->right, k, target);
     
     if(leftAns != NULL && rightAns == NULL){
         k--;
         if(k == 0){
-            // k = INT_MAX; if we use k <= 0 instead of k == 0
+            // k = INT_MAX; // this line is required if we use k <= 0 instead of k == 0
             return root;
         }
         return leftAns;
@@ -82,11 +81,11 @@ Node* solve(Node* root, int &k, int node){
     }
     else return NULL;
 }
-int kthAncestor(Node *root, int k, int node)
-{
-    Node* ans = solve(root, k, node);
+
+int kthAncestor(Node *root, int k, int target){
+    Node* ans = solve(root, k, target);
     
-    if(ans == NULL || ans->data == node){
+    if(ans == NULL || ans->data == target){
         return -1;
     }else{
         return ans->data;

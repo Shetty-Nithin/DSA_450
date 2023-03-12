@@ -48,9 +48,7 @@ Constraints:
 #include<queue>
 using namespace std;
 
-
-struct Node
-{
+struct Node{
     int data;
     Node* left, * right;
 };
@@ -69,7 +67,6 @@ pair<bool, int> isSumTreeCheck(Node* root){
     pair<bool, int> right = isSumTreeCheck(root->right);
     
     bool childSum = root->data == left.second + right.second;
-    
     pair<bool, int> ans;
     
     if(left.first && right.first && childSum){
@@ -82,7 +79,6 @@ pair<bool, int> isSumTreeCheck(Node* root){
     return ans;
 }
  
-bool isSumTree(Node* root)
-{
+bool isSumTree(Node* root){
     return isSumTreeCheck(root).first;
 }

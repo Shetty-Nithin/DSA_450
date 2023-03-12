@@ -52,8 +52,7 @@ Constraints:
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     struct Node* left;
     struct Node* right;
@@ -91,7 +90,6 @@ Node* createParentMapping(Node* root, int target, map<Node*, Node*> &nodeToParen
 }
 
 int min_time(Node* targetNode, map<Node*, Node*> nodeToParent){
-    
     map<Node*, bool> visited;
     queue<Node*> q;
     int ans = 0;
@@ -100,11 +98,12 @@ int min_time(Node* targetNode, map<Node*, Node*> nodeToParent){
     visited[targetNode] = true;
     
     while(!q.empty()){
-        
         bool flag = false;
         int size = q.size();
-        for(int i=0; i<size; i++){
-            
+
+        // for loop => burning all the node present in the queue are burning and spreading the fre to 
+        // the adjacent nodes at a signle time
+        for(int i=0; i<size; i++){ 
             Node* temp = q.front();
             q.pop();
             
@@ -131,11 +130,11 @@ int min_time(Node* targetNode, map<Node*, Node*> nodeToParent){
     return ans;
 }
     
-int minTime(Node* root, int target) 
-{
+int minTime(Node* root, int target) {
     map<Node*, Node*> nodeToParent;
-    
-    Node* targetNode = createParentMapping(root, target, nodeToParent);
+    // this function creates the parent children mapping as well as locate the target node
+    // thats why assigning the returned value to the targetNode variable.
+    Node* targetNode = createParentMapping(root, target, nodeToParent); 
     int ans = min_time(targetNode, nodeToParent);
     return ans;
 }

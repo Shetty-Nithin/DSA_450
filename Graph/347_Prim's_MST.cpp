@@ -54,12 +54,12 @@ Constraints :
 
 // Intuition is updating minimum distance to the parent from the current node and
 // creating the graph, which leads to MST.
+
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<pair<pair<int, int>, int>> calculatePrimsMST(int n, int m, vector<pair<pair<int, int>, int>> &g)
-{
+vector<pair<pair<int, int>, int>> calculatePrimsMST(int n, int m, vector<pair<pair<int, int>, int>> &g){
     unordered_map<int, list<pair<int, int>>> adjList;
     for(int i=0; i<g.size(); i++){
         int u = g[i].first.first;
@@ -70,37 +70,40 @@ vector<pair<pair<int, int>, int>> calculatePrimsMST(int n, int m, vector<pair<pa
         adjList[v].push_back(make_pair(u,w));
     }
     // (n+1) : to match node and index
-    vector<int> weight(n+1); // weight[1] is the weight between 0 and 1
+    vector<int> weight(n+1); // weight[1] is the weight between 0 and 1. Here 0 is the source node
     vector<bool> mst(n+1); 
-    vector<int> parent(n+1);
-    
+    vector<int> parent(n+1); // this vector is requried to re create the graph using MST.
     for(int i=0; i<=n; i++){
         weight[i] = INT_MAX; // considering the max weight initially
         mst[i] = false; // no node is belong to MST initially
         parent[i] = -1;
     }
-    weight[1] = 0;
-    parent[1] = -1; //considering 1 as source node
+    // 0 index is not being used to avoid the confussion.
+    weight[1] = 0; // distance between source to source is 0.
+    parent[1] = -1; //considering 1 as source node and it doesnt have any parent
     
-    for(int i=1; i<n; i++){
+    // run through all the nodes
+    // Visiting all the nodes (by making mst[n]=true) by selecting the node with minimum
+    // weight, since we need minimum spanning tree.
+    for(int i=1; i<n; i++){ 
         int minWeight = INT_MAX;
         int u;
         
         // finding the min weight in the weight array.
-        for(int v=1; v<=n; v++){
-            if(mst[v] == false && weight[v] < minWeight){
-                u = v; // assigning minimum value in the weight array to "u"
-                minWeight = weight[v]; // updating the minimum value
+        for(int j=1; j<=n; j++){
+            if(mst[j] == false && weight[j] < minWeight){
+                u = j; // assigning minimum value in the weight array to "u"
+                minWeight = weight[j]; // updating the minimum value
             }
         }
         mst[u] = true;
         
+        // updating the spanning tree by comparing the neighbour of this nodes with the existing weight
         for(auto neighbour : adjList[u]){
             int v = neighbour.first;
             int w = neighbour.second;
-            
             // Here it is checking which parent has the min weight from "v"
-            // is it the already existing parent or current parent i.e., "u"?
+            // is it the, already existing parent or current parent i.e., "u"?
             if(mst[v] == false && w < weight[v]){
                 weight[v] = w;
                 parent[v] = u;

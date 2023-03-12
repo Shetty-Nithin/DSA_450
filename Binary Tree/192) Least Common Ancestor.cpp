@@ -39,8 +39,7 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     struct Node* left;
     struct Node* right;
@@ -51,8 +50,7 @@ struct Node
     }
 };
 
-Node* lca(Node* root ,int n1 ,int n2 )
-{
+Node* lca(Node* root ,int n1 ,int n2 ){
     if(root == NULL){
         return NULL;
     }

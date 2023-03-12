@@ -39,8 +39,7 @@ Constraints:
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     Node* left, * right;
 };
@@ -51,7 +50,7 @@ public:
         if(root == NULL){
             return;
         }
-        if(root->left == NULL && root->right == NULL){
+        if(root->left == NULL && root->right == NULL){ // because it will be taken case by leaf function
             return;
         }
         
@@ -80,7 +79,7 @@ public:
         if(root == NULL){
             return;
         }
-        if(root->left == NULL && root->right == NULL){
+        if(root->left == NULL && root->right == NULL){ // because it will be taken care by the leaf function
             return;
         }
         if(root->right){

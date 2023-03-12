@@ -40,8 +40,7 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     Node* left;
     Node* right;
@@ -59,16 +58,15 @@ class Solution{
         pair<int, int> rightAns = solve(root->right);
         
         pair<int, int> res;
-        res.first = root->data + leftAns.second + rightAns.second;
-        res.second = max(leftAns.first, leftAns.second) + max(rightAns.first, rightAns.second);
-
+        res.first = root->data + leftAns.second + rightAns.second; // with current node
+        //            curr          prev excl       prev excl
+        res.second = max(leftAns.first, leftAns.second) + max(rightAns.first, rightAns.second); // without current node
+        //                prev incl         prec excl           prev incl       prev excl
         return res;
     }
     
-    int getMaxSum(Node *root) 
-    {
-        pair<int, int> ans = solve(root);
-        
+    int getMaxSum(Node *root) {
+        pair<int, int> ans = solve(root); // (with currentNode, without currNode)
         return max(ans.first, ans.second);
     }
 };

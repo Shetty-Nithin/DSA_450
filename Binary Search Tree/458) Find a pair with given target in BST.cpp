@@ -61,8 +61,7 @@ class Solution{
         v.push_back(root->data);
         inOrder(root->right, v);
     }
-    int isPairPresent(struct Node *root, int target)
-    {
+    int isPairPresent(struct Node *root, int target){
         vector<int> v;
         inOrder(root, v);
         

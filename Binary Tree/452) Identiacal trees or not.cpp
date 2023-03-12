@@ -35,8 +35,7 @@ Constraints:
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     struct Node* left;
     struct Node* right;
@@ -47,8 +46,7 @@ struct Node
     }
 };
 
-bool isIdentical(Node *r1, Node *r2)
-{
+bool isIdentical(Node *r1, Node *r2){
     if(r1 == NULL && r2 == NULL){
         return true;
     }

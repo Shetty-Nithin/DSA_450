@@ -29,8 +29,7 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     struct Node* left;
     struct Node* right;
@@ -41,8 +40,7 @@ struct Node
     }
 }; 
 //--------------------------Iterative way------------------------------
-vector<int> rightView(Node *root)
-{
+vector<int> rightView(Node *root){
     vector<int> ans;
     if(root == NULL){
         return ans;

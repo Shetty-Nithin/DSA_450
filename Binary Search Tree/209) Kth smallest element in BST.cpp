@@ -50,7 +50,6 @@ class Solution {
         }
         
         int left = solve(root->left, k, count);
-        
         if(left != -1){
             return left;
         }

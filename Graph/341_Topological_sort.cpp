@@ -88,8 +88,8 @@ vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
     return ans;
 }
 
-
-
+// Hint : Node with maximum outDegree edge will be the first in the order.
+//        And node with the maximum inDegree edge will be the last in the order.
 /**
  * Using Kahn's Algorithm or BFS Algorithm
  * 

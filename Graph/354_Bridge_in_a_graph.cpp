@@ -34,27 +34,27 @@ void dfs(int node, int parent, int &timer, vector<int> &disc, vector<int> &low,
         }
         if(!visited[neighbour]){
             dfs(neighbour, node, timer, disc, low, result, adjList, visited);
-            //updating the lowestTime, assuming back edges was found.
+            // updating the lowestTime, assuming back edges was found, 
+            // and there may be a shortes path. Hence we need to update the low value
             low[node] = min(low[node], low[neighbour]);
             
             //check edge is bridge or not
-            if(low[neighbour] > disc[node]){ //it means back edge is not found.
+            if(low[neighbour] > disc[node]){ //it means back edge is not found. This will be true when node is discoverd first and then neighbour is discovered.
                 vector<int> ans;
                 ans.push_back(node);
                 ans.push_back(neighbour);
                 result.push_back(ans);
             }
         }else{
-            // back edge
-            low[node] = min(low[node], disc[neighbour]);
-        }
+            // back edge : visiting the already visited node
+            low[node] = min(low[node], disc[neighbour]); // disc[neighbour] : already visited node
+         }
     }
 }
 
 vector<vector<int>> findBridges(vector<vector<int>> &edges, int v, int e) {
-    
     unordered_map<int, list<int>> adjList;
-    
+
     for(int i=0; i<edges.size(); i++){
         int u = edges[i][0];
         int v = edges[i][1];

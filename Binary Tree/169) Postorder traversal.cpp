@@ -8,21 +8,18 @@ Link : https://www.techiedelight.com/inorder-tree-traversal-iterative-recursive/
 #include<stack>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     Node *left, *right;
  
-    Node(int data)
-    {
+    Node(int data){
         this->data = data;
         this->left = this->right = nullptr;
     }
 };
 
 //----------------------------Recursive way--------------------------------
-void postorder(Node* root)
-{
+void postorder(Node* root) {
     if (root == NULL) {
         return;
     }
@@ -53,6 +50,9 @@ vector<int> postorderTraversal(TreeNode* root){
         return res;
     }
     
+    // To stack1 : Node <-- Left <-- Right
+    // To stack2 : Node <-- Right <-- Left
+    // Print : Left --> Right --> Node  => PreOrder Traversal
     st1.push(root);
     while(!st1.empty()){
         current = st1.top();
@@ -81,16 +81,22 @@ vector<int> postorderTraversal(TreeNode* root){
     TreeNode* current = root;
     
     while(!st.empty() || current != NULL){
+        // push all the left node to the stack until it reached the NULL
         if(current != NULL){
             st.push(current); 
             current = current->left;
-        }else{
-            TreeNode* temp = st.top()->right;
+        }
+        // once all the lefts are over
+        else{
+            TreeNode* temp = st.top()->right; // saving the link to the right node
             if(temp == NULL){
+                // if there is no right node, then push the parent node value to the result array.
                 temp = st.top();
                 st.pop(); 
                 res.push_back(temp->val);
 
+                // after saving the right node, we need to move to the parent node. This while loop
+                // is for that purpose.
                 while(!st.empty() && temp == st.top()->right){
                     temp = st.top();
                     st.pop();

@@ -55,7 +55,7 @@ int height(struct Node* node){
     
     int left = height(node->left);
     int right = height(node->right);
-    
+
     int res = max(left, right)+1;
     return res;
 }

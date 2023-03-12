@@ -29,15 +29,13 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     Node* left;
     Node* right;
 };
 
-vector<int> topView(Node *root)
-{
+vector<int> topView(Node *root){
     vector<int> ans;
     if(root == NULL){
         return ans;

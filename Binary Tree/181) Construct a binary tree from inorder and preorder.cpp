@@ -34,9 +34,7 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-
-struct Node
-{
+struct Node{
   int data;
   Node* left;
   Node* right;
@@ -71,17 +69,19 @@ Node* solve(int in[], int pre[], int &preOrderIndex, int inOrderStart, int inOrd
     root->left = solve(in, pre, preOrderIndex, inOrderStart, position-1, size);
     root->right = solve(in, pre, preOrderIndex, position+1, inOrderEnd, size);
     
-    return root;
-    
+    return root;    
 }    
     
-Node* buildTree(int in[],int pre[], int n)
-{
+Node* buildTree(int in[],int pre[], int n){
     int preOrderIndex = 0;
     Node* ans = solve(in, pre, preOrderIndex, 0, n-1, n);
     
     return ans;
 }
+
+
+
+
 
 //approach 2 - using map for finding the position.
 void createMapping(int in[], map<int, int> &m, int size){
@@ -108,8 +108,7 @@ Node* solve(int in[], int pre[], int &preOrderIndex,
     
 }
     
-Node* buildTree(int in[],int pre[], int n)
-{
+Node* buildTree(int in[], int pre[], int n){
     int preOrderIndex = 0;
     map<int, int> m;// node to index mapping
     createMapping(in, m, n);

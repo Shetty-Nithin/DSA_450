@@ -40,8 +40,8 @@ struct Node {
     Node* right;
 };
 
-vector<int> verticalOrder(Node *root)
-{  //   horiz   vert         nodes
+vector<int> verticalOrder(Node *root){  
+    //  horiz   vert        nodes
     map<int, map<int, vector<int>>> nodes;
     vector<int> ans;
     queue<pair<Node*, pair<int, int>>> q; // node, horizontal_dist, vertical_depth
@@ -69,8 +69,8 @@ vector<int> verticalOrder(Node *root)
         }
     }
     
-    for(auto i : nodes){ // horizontal key_value pair, i = {vertical_depths}
-        for(auto j : i.second){ // veritcal key_value pair, j = {particular_vertical_depth : vector}
+    for(auto i : nodes){ // horizontal key_value pair, i = {vertical_depths}   || example : -3 -2 -1 0 1 2 3 4 5
+        for(auto j : i.second){ // veritcal key_value pair, j = {particular_vertical_depth(level) : vector}
             for(auto k : j.second){ // items inside the vector, k = vector values
                 ans.push_back(k);
             }
@@ -78,3 +78,24 @@ vector<int> verticalOrder(Node *root)
     }
     return ans;
 }
+
+/*
+ -3   -2   -1   0    1    2    3    4    => horizontal indeces (hd[])
+ _____________________________________
+                1
+            2        3
+       4        5         7
+                6       
+                     8         9
+
+nodes  =>  i.first  |        i.second        |       j.second
+-------------------------------------------------------------------
+  i    =>  hd[-3]   =   [0, 1, 2, 3, 4, 5]       [],[],[],[],[]
+  i    =>  hd[-2]   =   [0, 1, 2, 3, 4, 5]       [],[],[4],[],[]
+  i    =>  hd[-1]   =   [0, 1, 2, 3, 4, 5]       [],[2],[],[],[]
+  i    =>  hd[0]    =   [0, 1, 2, 3, 4, 5]       [1],[],[5,6],[],[]
+  i    =>  hd[1]    =   [0, 1, 2, 3, 4, 5]       [],[3],[],[],[8]
+  i    =>  hd[2]    =   [0, 1, 2, 3, 4, 5]       [],[],[7],[],[]
+  i    =>  hd[3]    =   [0, 1, 2, 3, 4, 5]       [],[],[],[],[9]
+  i    =>  hd[4]    =   [0, 1, 2, 3, 4, 5]       [],[],[],[],[]
+*/

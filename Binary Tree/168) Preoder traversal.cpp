@@ -8,21 +8,18 @@ Link : https://www.techiedelight.com/inorder-tree-traversal-iterative-recursive/
 #include<stack>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     Node *left, *right;
  
-    Node(int data)
-    {
+    Node(int data){
         this->data = data;
         this->left = this->right = nullptr;
     }
 };
 
 //----------------------------Recursive way--------------------------------
-void preorder(Node* root)
-{
+void preorder(Node* root){
     if (root == NULL) {
         return;
     }
@@ -34,21 +31,21 @@ void preorder(Node* root)
 
 //-------------------------Iterative way--------------------------------------
 //approach 1
-void preorderIterative(Node* root)
-{
+void preorderIterative(Node* root){
     if (root == nullptr)
     return;
  
     stack<Node*> stack;
     stack.push(root);
  
-    while (!stack.empty())
-    {
+    while (!stack.empty()){
         Node* curr = stack.top();
         stack.pop();
  
         cout << curr->data << " ";
  
+        // first right goes to the stack and then left, 
+        // so while poping left will come first and then right
         if (curr->right) {
             stack.push(curr->right);
         }
@@ -64,8 +61,7 @@ struct TreeNode {
     TreeNode *left;
     TreeNode *right;
 };
-vector<int> preorderTraversal(TreeNode* root) {
-    
+vector<int> preorderTraversal(TreeNode* root) { 
     stack<TreeNode*> st;
     vector<int> res;
     TreeNode* current = root;

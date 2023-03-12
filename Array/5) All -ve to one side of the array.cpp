@@ -25,7 +25,7 @@ void reArrange(int arr[], int size){
 }
 
 int main() {
-    int arr[] = { 5,4,3,2,1,0,-1,-2,-3,-4,-5};
+    int arr[] = { 3,5,4,0,1,2,-1,-2,-5,-3,-4};
     int size = 11;
     
     reArrange(arr, size);

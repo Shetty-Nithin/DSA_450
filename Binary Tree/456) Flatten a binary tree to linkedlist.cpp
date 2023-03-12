@@ -75,8 +75,7 @@ Constraints :
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     struct Node* left;
     struct Node* right;
@@ -87,11 +86,9 @@ struct Node
     }
 };
 
-class Solution
-{
-    public:
-    void flatten(Node *root)
-    {
+class Solution{
+public:
+    void flatten(Node *root){
         Node* curr = root;
         while(curr){
             if(curr->left == NULL){

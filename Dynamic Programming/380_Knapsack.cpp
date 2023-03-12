@@ -58,8 +58,7 @@ private:
         return max(incl, excl);
     }   
 public:
-    int knapSack(int W, int wt[], int val[], int n) 
-    { 
+    int knapSack(int W, int wt[], int val[], int n){ 
       return solve(W, wt, val, n-1);
     }
 };
@@ -89,8 +88,7 @@ private:
         return dp[index][capacity];
     }   
 public:
-    int knapSack(int W, int wt[], int val[], int n) 
-    { 
+    int knapSack(int W, int wt[], int val[], int n) { 
         vector<vector<int>> dp(n, vector<int>(W+1, -1));
         return solve(W, wt, val, n-1, dp);
     }

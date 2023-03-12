@@ -72,7 +72,6 @@ Node* flatten(Node* root){
         curr->right = temp;
         curr = temp;
     }
-
     curr->left = NULL;
     curr->right = NULL;
 

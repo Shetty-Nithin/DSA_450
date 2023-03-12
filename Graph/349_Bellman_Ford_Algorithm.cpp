@@ -69,7 +69,6 @@ Constraints:
 using namespace std;
 
 int bellmonFord(int n, int m, int src, int dest, vector<vector<int>> &edges) {
-    
     vector<int> dist(n+1, 1e9); // initializing the distance with the max value.
     dist[src] = 0; // source to source distance is 0.    
 
@@ -80,7 +79,7 @@ int bellmonFord(int n, int m, int src, int dest, vector<vector<int>> &edges) {
             int v = edges[j][1];
             int w = edges[j][2];
             
-            if(dist[u] != 1e9 && ((dist[u] + w) < dist[v])){
+            if(dist[u] != 1e9 && ((dist[u] + w) < dist[v])){ // < distance to node, not the node value
                 dist[v] = dist[u] + w;
             }
         }
@@ -100,8 +99,7 @@ int bellmonFord(int n, int m, int src, int dest, vector<vector<int>> &edges) {
     }
     
     if(flag == false){
-        return dist[dest]; // this is the shortest paht between the give source and destination.
+        return dist[dest]; // this is the shortest path between the give source and destination.
     }
     return -1; // cycle is present, hence cannot find the shortest path between the given source and the destination.
-    
 }

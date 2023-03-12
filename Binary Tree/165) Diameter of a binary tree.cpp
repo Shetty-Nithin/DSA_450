@@ -37,9 +37,7 @@ Constraints:
 #include<queue>
 using namespace std;
 
-
-struct Node
-{
+struct Node{
     int data;
     struct Node* left;
     struct Node* right;

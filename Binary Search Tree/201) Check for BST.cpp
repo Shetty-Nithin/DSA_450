@@ -58,10 +58,8 @@ struct Node{
     }
 };
 
-class Solution
-{
-    public:
-    
+class Solution{
+public:
     bool isBST(Node* root, int mini, int maxi){
         if(root == NULL){
             return true;
@@ -69,15 +67,13 @@ class Solution
         
         if(root->data > mini && root->data < maxi){
             bool left = isBST(root->left, mini, root->data);
-            bool right = isBST(root->right, root->data, maxi);
-            
+            bool right = isBST(root->right, root->data, maxi); 
             return left&&right;
         }else{
             return false;
         }
     }
-    bool isBST(Node* root) 
-    {
+    bool isBST(Node* root){
         return isBST(root, INT_MIN, INT_MAX);
     }
 };

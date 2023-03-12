@@ -30,6 +30,7 @@ Constraints:
     Expected Auxiliary Space: O(1)
 */
 
+// Naive Approach
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
@@ -60,3 +61,39 @@ void sort012(int a[], int n)
         a[i] = 2;
     }
 }
+
+
+// Approach 2 : Dutch National Flag Algorithm
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int low = 0;
+        int mid = 0;
+        int high = nums.size()-1;
+        // here low, mid and high are the next valid places for
+        // 0, 1, 2 respectively
+        
+        while(mid <= high){
+            switch(nums[mid]){
+                case 0 :
+                    swap(nums[low], nums[mid]);
+                    low++;
+                    mid++;
+                    break;
+                    
+                case 1 :
+                    mid++;
+                    break;
+                
+                case 2 :
+                    swap(nums[mid], nums[high]);
+                    high--;
+                    break;
+            }
+        }
+    }
+};

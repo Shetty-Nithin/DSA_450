@@ -29,8 +29,6 @@ Example 2:
     Output:
     80 -1
 
-
-
 Constraints:
     1<=T<=100
     1<=n<=100
@@ -41,23 +39,18 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
+struct Node{
 	int key;
 	struct Node *left, *right;
 };
 
 
-void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
-{
-    
+void findPreSuc(Node* root, Node*& pre, Node*& suc, int key){  
     if (root == NULL){
       return;   
     }
  
-
-    if (root->key == key)
-    {
+    if (root->key == key){
         if (root->left != NULL){
             Node* tmp = root->left;
             while (tmp->right){
@@ -84,9 +77,7 @@ void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
     }
 }
 
-// void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
-// {
-    
+// void findPreSuc(Node* root, Node*& pre, Node*& suc, int key){
 //     Node* temp = root;
 //     while(temp->key != key){
 //         if(temp->key > key){
@@ -112,5 +103,4 @@ void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
 //         tempRight = tempRight->left;
 //     }
 //     suc = tempRight;
-
 // }

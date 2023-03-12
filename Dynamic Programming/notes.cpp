@@ -1,11 +1,24 @@
+/*
+Constraints :
+    10^18  =>  O(log N)
+    10^8   =>  O(N)
+    10^6   =>  O(Nlog N)
+    10^4   =>  O(N^2)
+    500    =>  O(N^3)
+    85-90  =>  O(N^4)
+    20     =>  2^N (recurssion)
+    11     =>  N!
+
+*/
+
 /*              Dyanmic Programming
                 ___________________
 
 1.  How to recognize DP?
 ->  Choice will be given
-->  optimization related words such as max, min,largest, or smallest 
+->  optimization related words such as max, min, largest, or smallest 
     will be present.
-->  If in recurssion overlapping problem is presnet means in recurssion if
+->  If in recurssion overlapping problem is presnet i.e., in recurssion if
     2 calls are present, then we can apply DP. (DP cannot be applied for single
     call recurssion)
 
@@ -13,7 +26,7 @@
 ->  Think of the smallest valid input
 
 3.  Parent Questions
-        i. 0-1 Knapsack (6)
+        i.  0-1 Knapsack (6)
         ii. Unbounded Knapsack (5)
         iii. Fibonacci (7)
         iV. Longest Common Subsequence (15)
@@ -22,19 +35,19 @@
         vii. Matrix Chain Multiplication (7)
         viii. DP on Trees (4)
         ix. DP on grid (14)
-        x. otheres (5)
+        x. others (5)
 
 4.  Knapsack
     types : 
-        i. 0-1 knapsack : either include or exclude completely. No partial and single occurence.
-        ii. Fractional : Fraction of an item can be included.
+        i. 0-1 knapsack : either include or exclude completely. No partial and only single occurence.
+        ii. Fractional : Fraction of an item can also be included.
         iii. Unbounded : same item can be included multiple times
  
     Problems on 0-1 Knapsack : 
         a. Subset sum problem
         b. Equal sum partition
         c. Count of subset sum
-        d. Minimum subset summ difference
+        d. Minimum subset sum difference
         e. Number of subset in given difference
         f. Target sum
 

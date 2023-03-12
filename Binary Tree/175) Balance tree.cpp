@@ -41,8 +41,7 @@ Constraints:
 #include<queue>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     struct Node* left;
     struct Node* right;
@@ -55,7 +54,7 @@ struct Node
 
 pair<bool, int> balancedCheck(Node* root){
     if(root == NULL){
-        pair<bool, int> p = make_pair(true, 0); 
+        pair<bool, int> p = make_pair(true, 0); // 0 is height
         return p;
     }
     
@@ -75,7 +74,6 @@ pair<bool, int> balancedCheck(Node* root){
     return ans;
 }
 
-bool isBalanced(Node *root)
-{
+bool isBalanced(Node *root){
     return balancedCheck(root).first;
 }

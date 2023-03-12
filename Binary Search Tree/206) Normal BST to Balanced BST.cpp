@@ -45,16 +45,15 @@ Constraints:
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
-	int data;
-	Node* left, *right;
+struct Node{
+    int data;
+    Node* left, *right;
 
-  Node(int val){
-    this->data = val;
-    this->left = NULL;
-    this->right = NULL;
-  }
+    Node(int val){
+      this->data = val;
+      this->left = NULL;
+      this->right = NULL;
+    }
 }; 
 
 void inOrder(Node* root, vector<int> &v){
@@ -79,8 +78,7 @@ Node* inOrderToBST(int start, int end, vector<int> &v){
     return root;
     
 }
-Node* buildBalancedTree(Node* root)
-{
+Node* buildBalancedTree(Node* root){
 	vector<int> v;
 	inOrder(root, v);
 	

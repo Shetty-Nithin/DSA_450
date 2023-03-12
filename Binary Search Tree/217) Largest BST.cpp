@@ -67,7 +67,7 @@ class Solution{
     public:
     info solve(Node* root, int &maxSize){
         if(root == NULL){
-            return {INT_MAX, INT_MIN, true, 0};
+            return {INT_MAX, INT_MIN, true, 0}; // (mini, maxi, isBST, size)
         }
         
         info left = solve(root->left, maxSize);
@@ -91,8 +91,7 @@ class Solution{
         return currNode;
     }
     
-    int largestBst(Node *root)
-    {
+    int largestBst(Node *root){
     	int maxSize = 0;
     	solve(root, maxSize);
     	return maxSize;

@@ -35,8 +35,7 @@ Constraints:
 #include<queue>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     struct Node* left;
     struct Node* right;
@@ -47,8 +46,7 @@ struct Node
     }
 };
 
-vector<int> levelOrder(Node* node)
-{
+vector<int> levelOrder(Node* node){
     queue<Node*> q;
     vector<int> arr;
 
@@ -82,8 +80,7 @@ struct TreeNode {
 
 class Solution {
 public:
-    vector<vector<int>> levelOrder(TreeNode* root)
-    {
+    vector<vector<int>> levelOrder(TreeNode* root){
         vector<vector<int>> level_order;
         queue<TreeNode*> q;
         
@@ -92,14 +89,13 @@ public:
         q.push(NULL);
         
         while(!q.empty()){
-            
             TreeNode* temp = q.front();
             q.pop();
             vector<int> curr_level;
             
             while(temp){
                 curr_level.push_back(temp->val); 
-                
+
                 if(temp->left){
                     q.push(temp->left);
                 }
@@ -110,9 +106,8 @@ public:
                 temp = q.front();
                 q.pop();
             }
-            level_order.push_back(curr_level);
-            
-            if(!q.empty()) q.push(NULL);
+            level_order.push_back(curr_level); // if the temp is NULL, then one level is completed, hence push the vector into final vector
+            if(!q.empty()) q.push(NULL); // pushing NULL to saperate the levels.
         }
         
         return level_order;

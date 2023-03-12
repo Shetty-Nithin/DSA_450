@@ -38,9 +38,10 @@ Constraints:
     Expected auxiliary space: O(N)
 */
 
+// without using space for queue
+
 #include <bits/stdc++.h>
 using namespace std;
-
 
 struct Node {
     int data;
@@ -50,26 +51,28 @@ struct Node {
 
 class Solution {
 public:
-    vector<int> inOrder(Node* root)
-    {
+    vector<int> inOrder(Node* root){
         vector<int> ans;
         Node* curr = root;
         
         while(curr){
             if(curr->left == NULL){
+                // Left, Node, Right
                 ans.push_back(curr->data);
                 curr = curr->right;
             }else{
                 Node* pred = curr->left; //predeccesor
-                while(pred->right && pred->right != curr){
+                while(pred->right && pred->right != curr){ // 2nd condition : Right most node is NOT already linked to it curr node.
                     pred = pred->right;
                 }
+                // this executes on the first time
                 if(pred->right == NULL){
-                    pred->right = curr;
-                    curr = curr->left;
+                    pred->right = curr; // link the right most node to the curr node.
+                    curr = curr->left; // go for next node
                 }else{
+                    // this executes on the 2nd time
                     ans.push_back(curr->data);
-                    pred->right = NULL;
+                    pred->right = NULL; // breaking the link to avoid the infinite loop
                     curr = curr->right;
                 }
             }

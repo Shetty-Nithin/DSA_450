@@ -28,17 +28,16 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
-	int data;
-	struct Node *left;
-	struct Node *right;
+struct Node{
+    int data;
+    struct Node *left;
+    struct Node *right;
 
-  Node(int data){
-    this->data = data;
-    this->left = NULL;
-    this->right = NULL;
-  }
+    Node(int data){
+      this->data = data;
+      this->left = NULL;
+      this->right = NULL;
+    }
 };
 
 struct Node* solve(int size, int pre[], char preLN[], int &index){
@@ -59,8 +58,7 @@ struct Node* solve(int size, int pre[], char preLN[], int &index){
     return newNode;
 }
 
-struct Node *constructTree(int n, int pre[], char preLN[])
-{
+struct Node *constructTree(int n, int pre[], char preLN[]){
     int index = 0;
     return solve(n, pre, preLN, index); 
 }

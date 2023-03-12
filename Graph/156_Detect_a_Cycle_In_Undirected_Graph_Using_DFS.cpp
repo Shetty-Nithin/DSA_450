@@ -1,7 +1,6 @@
 // Link : https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
 // Link : https://www.codingninjas.com/codestudio/problem-details/cycle-detection-in-undirected-graph_1062670
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -16,15 +15,14 @@ bool isCyclicDFS(int node, int parent, unordered_map<int, bool> &visited,
             if(cycleDetected){
                 return true;
             }
-        }else if(neighbour != parent){
-                return true;
+        }else if(neighbour != parent){ // visited and its not a parent
+            return true;
         }
     }
     return false;
 }
 
-string cycleDetection (vector<vector<int>>& edges, int n, int m)
-{
+string cycleDetection (vector<vector<int>>& edges, int n, int m){
     unordered_map<int, list<int>> adjList;
     for(int i=0; i<m; i++){
         int u = edges[i][0];

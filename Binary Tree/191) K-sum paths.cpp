@@ -53,8 +53,7 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node 
-{
+struct Node {
     int data;
     Node *left;
     Node *right;
@@ -85,8 +84,7 @@ void solve(Node* root, int k, vector<int> path, int &count){
     // path.pop_back(); // is not required
 }
 
-int sumK(Node *root,int k)
-{
+int sumK(Node *root,int k){
     vector<int> path;
     int count = 0;
     solve(root, k, path, count);
@@ -107,6 +105,9 @@ struct TreeNode {
 
 class Solution {
 private: 
+    // Go down completely till the NULL node and push all the node you encounter. 
+    // Once the node is null, then use for loop to check targetSum in the currPath array. 
+    // Once the for loop exists, just pop out the last node and push another node.
     void findTotalPaths(TreeNode* root, int targetSum, int &totalPath, vector<int> &currPath){
         if(root == NULL){
             return;
