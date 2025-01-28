@@ -44,7 +44,7 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace std;
 
-// Kth smallest
+// Kth smalles using : minHeap
 class Solution{
     public:
     // arr : given array
@@ -52,7 +52,32 @@ class Solution{
     // r : ending index of the array i.e size-1
     // k : find kth smallest element and return using this function
     int kthSmallest(int arr[], int l, int r, int k) {
+        priority_queue<int, vector<int>, greater<int>> minHeap;
+        int size = r-k+2;
         
+        for(int i=0; i<size; i++){
+            minHeap.push(arr[i]);
+        }
+        
+        for(int i=size; i<=r; i++){
+            if(minHeap.top() < arr[i]){
+                minHeap.pop();
+                minHeap.push(arr[i]);
+            }
+        }
+        
+        return minHeap.top();
+    }
+};
+
+// Kth smallest : using maxHeap
+class Solution{
+    public:
+    // arr : given array
+    // l : starting index of the array i.e 0
+    // r : ending index of the array i.e size-1
+    // k : find kth smallest element and return using this function
+    int kthSmallest(int arr[], int l, int r, int k) {
         priority_queue<int> max_heap;
         int size = r-l+1;
         

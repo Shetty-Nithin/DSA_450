@@ -206,7 +206,7 @@ public:
                     int mini = minimum(root->right);
                     this->root->data = mini;
 
-                    this->root->right = deleteNode(mini);
+                    this->root->right = deleteNode(mini); // again doing same thing until curr hits the null
 
                     //OR
                     // int maxi = maximum(root->left);

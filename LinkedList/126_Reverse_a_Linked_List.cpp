@@ -37,8 +37,7 @@ using namespace std;
 // Iterative way
 class Solution_1{
     public:
-    Node* reverseList(Node *head)
-    {
+    Node* reverseList(Node *head){
         Node* prev = NULL;
         Node* curr = head;
         Node* backup;
@@ -69,8 +68,7 @@ class Solution_2{
         
         reverseLL(head, curr, backup);
     }
-    Node* reverseList(Node *head)
-    {
+    Node* reverseList(Node *head){
         Node* prev = NULL;
         Node* curr = head;
         reverseLL(head, prev, curr);

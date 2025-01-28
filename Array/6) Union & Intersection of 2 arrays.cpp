@@ -39,7 +39,6 @@ Constraints:
 using namespace std;
 
 int doUnion(int a[], int n, int b[], int m)  {
-
     set<int> ans;
     
     for(int i=0; i<n; i++){

@@ -58,10 +58,10 @@ vector<int> leftView(Node *root){
        pair<Node*, int> temp = q.front();
        q.pop();
        
-       Node* leftNode = temp.first;
+       Node* leftNode = temp.first; // we want left view thats why
        int level = temp.second;
        
-       if(m.find(level) == m.end()){
+       if(m.find(level) == m.end()){ // this condition has written because we are pushing the leftNode->left to the q first.
            m[level] = leftNode->data;
        }
        

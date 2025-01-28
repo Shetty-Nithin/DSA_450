@@ -81,8 +81,7 @@ class Solution1
 class Solution2
 {
     public:
-    bool detectLoop(Node* head)
-    {
+    bool detectLoop(Node* head){
         if(head == NULL){
             return false;
         }

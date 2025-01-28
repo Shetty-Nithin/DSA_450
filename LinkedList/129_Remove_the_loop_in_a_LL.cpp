@@ -64,6 +64,48 @@ struct Node
 
 };
 
+// class Solution
+// {
+//     public:
+//     Node* detectLoop(Node* head)
+//     {
+//         if(head == NULL){
+//             return NULL;
+//         }
+        
+//         Node* slow = head;
+//         Node* fast = head;
+        
+//         while(fast != NULL && fast->next != NULL){
+//             fast = fast->next->next;
+//             slow = slow->next;
+            
+//             if(slow == fast){
+//                 return slow;
+//             }
+//         }
+//         return NULL;
+//     }
+
+//     void removeLoop(Node* head){
+//        if(head == NULL){
+//            return;
+//        } 
+
+//        Node* slowMeetsFastAt = detectLoop(head);
+//        Node* slow = head;
+
+//        while(slowMeetsFastAt->next != slow){
+//            slow = slow->next;
+//            slowMeetsFastAt = slowMeetsFastAt->next;
+//        }
+
+//        slowMeetsFastAt->next = NULL;
+//     }
+// };
+
+
+//Solution:
 class Solution
 {
     public:
@@ -87,19 +129,37 @@ class Solution
         return NULL;
     }
 
-    void removeLoop(Node* head){
+    Node* getStaringNodeOfLoop(Node* head){
+        
        if(head == NULL){
-           return;
+           return NULL;
        } 
 
        Node* slowMeetsFastAt = detectLoop(head);
        Node* slow = head;
 
-       while(slowMeetsFastAt->next != slow){
+       while(slow != slowMeetsFastAt){
            slow = slow->next;
            slowMeetsFastAt = slowMeetsFastAt->next;
        }
 
-       slowMeetsFastAt->next = NULL;
+       return slow;
+    }
+
+    void removeLoop(Node* head){
+        
+        if(head == NULL){
+           return;
+        } 
+        
+        if(detectLoop(head)){
+            Node* FristNodeOfLoop = getStaringNodeOfLoop(head);
+            Node* temp = FristNodeOfLoop;
+            
+            while(temp->next != FristNodeOfLoop){
+               temp = temp->next;
+            }
+            temp->next = NULL;
+        }
     }
 };

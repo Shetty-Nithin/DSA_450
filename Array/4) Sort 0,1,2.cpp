@@ -35,8 +35,7 @@ Constraints:
 #include <bits/stdc++.h>
 using namespace std;
 
-void sort012(int a[], int n)
-{
+void sort012(int a[], int n){
     int zeros = 0;
     int ones = 0;
     int twos = 0;
@@ -64,7 +63,6 @@ void sort012(int a[], int n)
 
 
 // Approach 2 : Dutch National Flag Algorithm
-
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -91,6 +89,7 @@ public:
                 
                 case 2 :
                     swap(nums[mid], nums[high]);
+                    // because we are chekcing the number at the mid position. If the number is 2, we have to move it to the last.
                     high--;
                     break;
             }

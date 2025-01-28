@@ -30,11 +30,9 @@ struct Node
 
 };
 
-class Solution
-{
+class Solution{
     public:
-    Node* detectLoop(Node* head)
-    {
+    Node* detectLoop(Node* head){
         if(head == NULL){
             return NULL;
         }
@@ -54,7 +52,6 @@ class Solution
     }
 
     Node* getStaringNodeOfLoop(Node* head){
-        
        if(head == NULL){
            return NULL;
        } 
@@ -70,8 +67,7 @@ class Solution
        return slow;
     }
 
-    void removeLoop(Node* head){
-        
+    void removeLoop(Node* head){  
         if(head == NULL){
            return;
         } 

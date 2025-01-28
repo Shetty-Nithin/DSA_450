@@ -23,7 +23,6 @@ Constraints:
 using namespace std; 
 
 string reverseWord(string str){
-    
   int left = 0;
   int right = str.length()-1;
   

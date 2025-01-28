@@ -101,7 +101,7 @@ int min_time(Node* targetNode, map<Node*, Node*> nodeToParent){
         bool flag = false;
         int size = q.size();
 
-        // for loop => burning all the node present in the queue are burning and spreading the fre to 
+        // for loop => burning all the node present in the queue are burning and spreading the fire to 
         // the adjacent nodes at a signle time
         for(int i=0; i<size; i++){ 
             Node* temp = q.front();

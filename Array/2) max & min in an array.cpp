@@ -28,17 +28,67 @@ Constraints:
 #include <bits/stdc++.h>
 using namespace std;
 
-pair<long long, long long> getMinMax(long long a[], int n) {
-    
-    
+pair<long long, long long> getMinMax(long long a[], int n)
+{
     long long mini = a[0];
     long long maxi = a[0];
-    
-    for(int i=0; i<n; i++){
+
+    for (int i = 0; i < n; i++)
+    {
         mini = min(mini, a[i]);
         maxi = max(maxi, a[i]);
     }
     pair<long long, long long> p = make_pair(mini, maxi);
-    
-    return p; 
+
+    return p;
 }
+
+
+/*
+Similar Problem:
+Removing minimum and maximum from an array
+Link: https://leetcode.com/problems/removing-minimum-and-maximum-from-array/description/
+*/
+class Solution
+{
+public:
+    int minimumDeletions(vector<int> &nums)
+    {
+        int minPosition = 0;
+        int maxPosition = 0;
+        int minValue = INT_MAX;
+        int maxValue = INT_MIN;
+        int totalRemoval = 0;
+
+        for (int i = 0; i < nums.size(); i++)
+        {
+            if (nums[i] < minValue)
+            {
+                minValue = nums[i];
+                minPosition = i;
+            }
+            if (nums[i] > maxValue)
+            {
+                maxValue = nums[i];
+                maxPosition = i;
+            }
+        }
+
+        if (minPosition < maxPosition)
+        {
+            int leftRight = (minPosition + 1) + (nums.size() - maxPosition);
+            int leftLeft = maxPosition + 1;
+            int rightRight = nums.size() - minPosition;
+            totalRemoval = min(leftRight, min(leftLeft, rightRight));
+        }
+        else
+        {
+            int leftRight = (maxPosition + 1) + (nums.size() - minPosition);
+            int leftLeft = minPosition + 1;
+            int rightRight = nums.size() - maxPosition;
+            totalRemoval = min(leftRight, min(leftLeft, rightRight));
+        }
+
+        return totalRemoval;
+    }
+};

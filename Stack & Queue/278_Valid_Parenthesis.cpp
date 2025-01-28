@@ -67,8 +67,7 @@ class Solution
         }
     }
     public:
-    bool ispar(string x)
-    {
+    bool ispar(string x){
         stack<int> stk;
         for(int i=0; i<x.length(); i++){
             char ch = x[i];

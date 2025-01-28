@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 class Node {
   public:
   int val;
@@ -49,7 +48,6 @@ class circular_Linked_List {
   }
 
   void deleteNodeAt(int element){
-
     if(length == 0){
       cout << "List is empty" << endl;
       return;

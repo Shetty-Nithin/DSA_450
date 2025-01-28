@@ -63,7 +63,7 @@ class Heap {
             return;
         }
 
-        arr[1] = arr[size]; // replacing first node with last node.
+        arr[1] = arr[size]; // replacing first node with last node.(that is deleting the top root node)
         size--; // deleting the last node;
 
         // sink down

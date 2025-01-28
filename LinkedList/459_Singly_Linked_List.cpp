@@ -15,7 +15,7 @@ class Node {
     }
 
     ~Node() {
-        int value = this->data;
+        // int value = this->data;
         if(this->next != NULL){
             delete next;
             this->next = NULL;    
@@ -36,7 +36,6 @@ class singly_linked_list {
     }
 
     void insertAtHead(int element){
-
         Node *newNode = new Node(element);
 
         if(length == 0){
@@ -52,7 +51,6 @@ class singly_linked_list {
     }
 
     void insertAtTail(int element){
-
         Node *newNode = new Node(element);
 
         if(length == 0){
@@ -68,7 +66,6 @@ class singly_linked_list {
     }
 
     void insertAtPosition(int pos, int element){
-
         if(pos <= 1){
             insertAtHead(element);
             return;
@@ -91,7 +88,6 @@ class singly_linked_list {
     }
 
     void updateAt(int pos, int element){
-
         Node* curr = head;
 
         while(pos-1){
@@ -102,7 +98,6 @@ class singly_linked_list {
     }
 
     void deleteAt(int pos){
-
         if(pos == 1){
             Node* deletableNode = head;
             head = head->next;

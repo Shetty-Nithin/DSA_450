@@ -3,7 +3,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 class Node {
   public:
   int val;
@@ -69,7 +68,6 @@ class doubly_Linked_List {
   }
 
   void insertAtPosition(int pos, int element){
-
     if(pos <= 1){
       insertAtHead(element);
     }

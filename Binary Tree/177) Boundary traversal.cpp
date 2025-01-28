@@ -50,7 +50,7 @@ public:
         if(root == NULL){
             return;
         }
-        if(root->left == NULL && root->right == NULL){ // because it will be taken case by leaf function
+        if(root->left == NULL && root->right == NULL){ // because it will be taken care by leaf function
             return;
         }
         
@@ -87,7 +87,7 @@ public:
         }else{
             traverseRight(root->left, ans);
         }
-        ans.push_back(root->data);
+        ans.push_back(root->data); // to print the right boundary continuously from the leaf
     }
     
     vector <int> boundary(Node *root)
@@ -99,8 +99,8 @@ public:
         ans.push_back(root->data);
         
         traverseLeft(root->left, ans); // left
-        traverseLeaf(root->left, ans);
-        traverseLeaf(root->right, ans);
+        traverseLeaf(root->left, ans); // leaf
+        traverseLeaf(root->right, ans); // leaf
         traverseRight(root->right, ans); // right
         
         return ans;

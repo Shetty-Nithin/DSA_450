@@ -14,7 +14,7 @@ Example 1:
     valueN[] = {4,5}
     M = 3
     valueM[] = {3,4,5}
-    Output: 3 9 0  
+    Output: 3 9 0
     Explanation: For the given two linked
     list (4 5) and (3 4 5), after adding
     the two linked list resultant linked
@@ -40,15 +40,17 @@ Constraints:
     Expected Auxiliary Space: O(Max(N,M)) for the resultant list.
 */
 
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-struct Node {
+struct Node
+{
     int data;
-    Node* next;
+    Node *next;
 
-    Node(int val){
+    Node(int val)
+    {
         data = val;
         next = NULL;
     }
@@ -56,164 +58,205 @@ struct Node {
 
 class Solution
 {
-    public:
-    Node* reverseList(Node *head){
-        Node* prev = NULL;
-        Node* curr = head;
-        Node* backup;
-        
-        while(curr != NULL){
+public:
+    Node *reverseList(Node *head)
+    {
+        Node *prev = NULL;
+        Node *curr = head;
+        Node *backup;
+
+        while (curr != NULL)
+        {
             backup = curr->next;
             curr->next = prev;
-            
+
             prev = curr;
             curr = backup;
         }
-        
+
         return prev;
-    } 
-    
-    void insertAtTail(struct Node* &head, struct Node* &tail, int digit){
-        struct Node* newNode = new Node(digit);
-        if(head == NULL){
+    }
+
+    void insertAtTail(struct Node *&head, struct Node *&tail, int digit)
+    {
+        struct Node *newNode = new Node(digit);
+        if (head == NULL)
+        {
             head = newNode;
             tail = newNode;
-        }else{
+        }
+        else
+        {
             tail->next = newNode;
             tail = newNode;
         }
     }
-    
-    struct Node* add(struct Node* first, struct Node* second){
+
+    struct Node *add(struct Node *first, struct Node *second)
+    {
         int carry = 0;
         int sum = 0;
         int digit = 0;
-        
-        struct Node* ansHead = NULL;
-        struct Node* ansTail = NULL;
-        
-        while(first != NULL && second != NULL){
+
+        // initializing the answer bits
+        struct Node *ansHead = NULL; // this is required to return the answer
+        struct Node *ansTail = NULL;
+
+        while (first != NULL && second != NULL)
+        {
             sum = carry + first->data + second->data;
-            digit = sum%10;
-            carry = sum/10;
-            
+            digit = sum % 10;
+            carry = sum / 10;
+
             insertAtTail(ansHead, ansTail, digit);
-            
+
             first = first->next;
             second = second->next;
         }
-        while(first != NULL){
+        while (first != NULL)
+        {
             sum = carry + first->data;
-            digit = sum%10;
-            carry = sum/10;
-            
+            digit = sum % 10;
+            carry = sum / 10;
+
             insertAtTail(ansHead, ansTail, digit);
             first = first->next;
         }
-        while(second != NULL){
+        while (second != NULL)
+        {
             sum = carry + second->data;
-            digit = sum%10;
-            carry = sum/10;
-            
+            digit = sum % 10;
+            carry = sum / 10;
+
             insertAtTail(ansHead, ansTail, digit);
             second = second->next;
         }
-        if(carry != 0){
+        if (carry != 0)
+        {
             insertAtTail(ansHead, ansTail, carry);
         }
-        
+
         return ansHead;
     }
-    
-    struct Node* addTwoLists(struct Node* first, struct Node* second)
+
+    struct Node *addTwoLists(struct Node *first, struct Node *second)
     {
         first = reverseList(first);
         second = reverseList(second);
-        
-        struct Node* ans = add(first, second);
+
+        struct Node *ans = add(first, second);
         ans = reverseList(ans);
-        
+
         return ans;
     }
 };
 
-
-// approach 2: 
+// approach 2:
 class Solution
 {
-    public:
-    Node* reverseList(Node *head){
-        Node* prev = NULL;
-        Node* curr = head;
-        Node* backup;
-        
-        while(curr != NULL){
+public:
+    Node *reverseList(Node *head)
+    {
+        Node *prev = NULL;
+        Node *curr = head;
+        Node *backup;
+
+        while (curr != NULL)
+        {
             backup = curr->next;
             curr->next = prev;
-            
+
             prev = curr;
             curr = backup;
         }
-        
+
         return prev;
-    } 
-    
-    void insertAtTail(struct Node* &head, struct Node* &tail, int digit){
-        struct Node* newNode = new Node(digit);
-        if(head == NULL){
+    }
+
+    void insertAtTail(struct Node *&head, struct Node *&tail, int digit)
+    {
+        struct Node *newNode = new Node(digit);
+        if (head == NULL)
+        {
             head = newNode;
             tail = newNode;
-        }else{
+        }
+        else
+        {
             tail->next = newNode;
             tail = newNode;
         }
     }
-    
-    struct Node* add(struct Node* first, struct Node* second){
+
+    struct Node *add(struct Node *first, struct Node *second)
+    {
         int carry = 0;
         int sum = 0;
         int digit = 0;
-        
-        struct Node* ansHead = NULL;
-        struct Node* ansTail = NULL;
-        
-        while(first != NULL || second != NULL || carry != 0){  
+
+        struct Node *ansHead = NULL;
+        struct Node *ansTail = NULL;
+
+        while (first != NULL || second != NULL || carry != 0)
+        {
             int val1 = 0;
-            if(first != NULL){
+            if (first != NULL)
+            {
                 val1 = first->data;
             }
-            
+
             int val2 = 0;
-            if(second != NULL){
+            if (second != NULL)
+            {
                 val2 = second->data;
             }
-            
+
             sum = carry + val1 + val2;
-            digit = sum%10;
-            carry = sum/10;
-            
+            digit = sum % 10;
+            carry = sum / 10;
+
             insertAtTail(ansHead, ansTail, digit);
-            
-            if(first != NULL){
+
+            if (first != NULL)
+            {
                 first = first->next;
             }
-            
-            if(second != NULL){
+
+            if (second != NULL)
+            {
                 second = second->next;
             }
         }
-      
+
         return ansHead;
     }
-    
-    struct Node* addTwoLists(struct Node* first, struct Node* second)
+
+    struct Node *addTwoLists(struct Node *first, struct Node *second)
     {
         first = reverseList(first);
         second = reverseList(second);
-        
-        struct Node* ans = add(first, second);
+
+        struct Node *ans = add(first, second);
         ans = reverseList(ans);
-        
+
         return ans;
     }
 };
+
+/*
+Given:
+first =>      7 --> 2 --> 4 --> 3 --> null
+second =>           5 --> 6 --> 4 ->> null
+              ----------------------------
+              7 --> 8 --> 0 --> 7 --> null
+
+
+After Reverse:
+first =>       3 --> 4 --> 2 --> 7 --> null
+second =>      4 --> 6 --> 5 --> null
+               -----------------------
+ansHead =>     7 --> 0 --> 8 --> 7   ansTail
+
+Again after Reverse(ansHead):
+head =>     7 --> 8 --> 0 --> 7
+*/

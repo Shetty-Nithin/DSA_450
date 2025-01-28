@@ -50,7 +50,6 @@ struct Node {
 class Solution{
   public:
     Node* middleNode(Node* head) {
-        
         if(head == NULL || head->next == NULL){
             return head;
         }
@@ -67,8 +66,7 @@ class Solution{
     }
     
 
-    Node* reverse_LL(Node *head)
-    {
+    Node* reverse_LL(Node *head){
         Node* prev = NULL;
         Node* curr = head;
         Node* nextNode = NULL;

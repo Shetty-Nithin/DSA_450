@@ -52,9 +52,9 @@ vector<int> postorderTraversal(TreeNode* root){
     
     // To stack1 : Node <-- Left <-- Right
     // To stack2 : Node <-- Right <-- Left
-    // Print : Left --> Right --> Node  => PreOrder Traversal
+    // Print : Left --> Right --> Node  => PostOrder Traversal
     st1.push(root);
-    while(!st1.empty()){
+    while(!st1.empty()){ // this while loop is to store the nodes in the stack2 in the printable order i.e., left->right->node
         current = st1.top();
         st1.pop();
         st2.push(current);

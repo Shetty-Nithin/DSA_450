@@ -88,7 +88,7 @@ void solve(int x, int y, vector<vector<int> > &maze, int n, vector<string> &ans,
     visited[x][y] = 0;
 }
 
-vector < string > searchMaze(vector < vector < int >> & maze, int n) {
+vector <string> searchMaze(vector < vector < int >> & maze, int n) {
     vector<string> ans;
     vector<vector<bool>> visited(n, vector<bool> (n, 0));
     string path = "";

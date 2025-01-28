@@ -61,12 +61,12 @@ class Solution{
         res.first = root->data + leftAns.second + rightAns.second; // with current node
         //            curr          prev excl       prev excl
         res.second = max(leftAns.first, leftAns.second) + max(rightAns.first, rightAns.second); // without current node
-        //                prev incl         prec excl           prev incl       prev excl
+        //                prev incl         prev excl           prev incl       prev excl
         return res;
     }
     
     int getMaxSum(Node *root) {
-        pair<int, int> ans = solve(root); // (with currentNode, without currNode)
+        pair<int, int> ans = solve(root); // pair <withCurrentNode, withoutCurrNode>
         return max(ans.first, ans.second);
     }
 };

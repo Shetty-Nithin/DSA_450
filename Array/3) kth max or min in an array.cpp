@@ -64,14 +64,16 @@ int get_CorrectIndex(int *arr, int start, int end){
     int pivotValue = arr[end];
     int pivotIndex = start;
 
-    for(int i=start; i<end; i++){
+    for(int i=start; i<end; i++){ // moving all the smaller value than the pivotValue before the pivotIndex.
         if(arr[i] < pivotValue){
             swap(arr[pivotIndex], arr[i]);
             pivotIndex++;
         }
     }
 
-    swap(arr[end], arr[pivotIndex]);
+    swap(arr[end], arr[pivotIndex]); // placing the pivotValue at its correct index pivotIndex 
+    // because all the values from the index "pivotIndex" to "end-1"
+    // are greater than the value "pivotValue" or arr[end]
     return pivotIndex;
 }
 
